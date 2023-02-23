@@ -1,22 +1,22 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "offlineagency/laravel-email-chef",
+    "description": "This is a simple Laravel package for integration with Email Chef API",
     "keywords": [
-        ":vendor_name",
+        "OfflineAgency",
         "laravel",
-        ":package_slug"
+        "laravel-email-chef"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/offlineagency/laravel-email-chef",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Manuel Romanato",
+            "email": "manuel.romanato@offlineagency.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "spatie/laravel-package-tools": "^1.4.3",
         "illuminate/contracts": "^8.37"
     },
@@ -30,13 +30,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "OfflineAgency\\LaravelEmailChef\\": "src",
+            "OfflineAgency\\LaravelEmailChef\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "OfflineAgency\\LaravelEmailChef\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -44,15 +44,18 @@
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "OfflineAgency\\LaravelEmailChef\\LaravelEmailChefServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\SkeletonFacade"
+                "LaravelEmailChef": "OfflineAgency\\LaravelEmailChef\\LaravelEmailChefFacade"
             }
         }
     },
