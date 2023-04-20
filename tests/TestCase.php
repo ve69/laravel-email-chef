@@ -17,7 +17,7 @@ class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        Config::set('email-chef.baseUrl', 'https://app.emailchef.com/api/');
+        Config::set('email-chef.baseUrl', 'https://app.emailchef.com/apps/api/v1/');
         Config::set('email-chef.username', 'support@offlineagency.it');
         Config::set('email-chef.password', 'kB2!KsJYQ');
 

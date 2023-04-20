@@ -17,19 +17,7 @@ class ContactsTest extends TestCase
             'email' => 'ciao@gmail.com',
             'firstname' => 'Mario',
             'lastname' => 'Rossi',
-            'custom_fields' => [
-/*                'id' => '1212',
-                'list_id' => '251338',
-                'name' => 'Smartphone4',
-                'type_id' => '1',
-                'place_holder' => 'smartphone4',
-                'options' => 'nul',
-                'default_value' => '1',
-                'admin_only' => '0',
-                'ord' => '8',
-                'data_type' => 'text',
-                'value' => '1'*/
-            ]
+
         ]);
 
         dd($response);

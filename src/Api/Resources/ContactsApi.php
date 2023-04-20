@@ -23,11 +23,10 @@ class ContactsApi extends Api
         $response = $this->post(
             'contacts',
             [
-                'instance_in' => $instance_in,
-                'mode' => $mode
+                'instance_in' => array_merge($instance_in,['mode' => $mode])
+
             ]
         );
-dd($response);
 /*        if (! $response->success) {
             return new Error($response->data);
         }
