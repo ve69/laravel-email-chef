@@ -41,7 +41,7 @@ class LaravelEmailChef
     private function setHeader()
     {
         $this->header = Http::withHeaders([
-            'Accept' => 'application/json; charset=utf-8',
+            'Content-Type' => 'application/json; charset=utf-8',
             'authkey' => $this->getAuthkey(),
         ]);
     }

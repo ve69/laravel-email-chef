@@ -19,7 +19,7 @@ class TestCase extends BaseTestCase
 
         Config::set('email-chef.baseUrl', 'https://app.emailchef.com/apps/api/v1/');
         Config::set('email-chef.username', 'support@offlineagency.it');
-        Config::set('email-chef.password', 'kB2!KsJYQ');
+        Config::set('email-chef.password', '');
 
         Factory::guessFactoryNamesUsing(
             fn (string $modelName) => 'OfflineAgency\\LaravelEmailChef\\Database\\Factories\\'.class_basename($modelName).'Factory'
