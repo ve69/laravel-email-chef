@@ -1,7 +1,8 @@
 <?php
 
+namespace OfflineAgency\LaravelEmailChef\Tests;
+
 use OfflineAgency\LaravelEmailChef\LaravelEmailChef;
-use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
