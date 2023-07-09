@@ -27,8 +27,7 @@ class Api extends LaravelEmailChef
 
     protected function post(
         string $url,
-        array $body,
-        bool $has_file = false
+        array $body
     ): object {
         $complete_url = $this->baseUrl.$url;
 
@@ -36,7 +35,6 @@ class Api extends LaravelEmailChef
 
         $response_status = $response->status();
 
-        dd($complete_url,$body, $response_status,$response->body());
 
 //        if ($response_status === 403 || $response_status === 429) {
 //            $this->waitThrottle($response_status);
@@ -105,13 +103,13 @@ class Api extends LaravelEmailChef
     ) {
         switch ($status) {
             case 403:
-                usleep(config('fatture-in-cloud-v2.limits.403'));
+                usleep(config('email-chef.limits.403'));
                 break;
             case 429:
-                usleep(config('fatture-in-cloud-v2.limits.429'));
+                usleep(config('email-chef.limits.429'));
                 break;
             default:
-                usleep(config('fatture-in-cloud-v2.limits.default'));
+                usleep(config('email-chef.limits.default'));
                 break;
         }
     }

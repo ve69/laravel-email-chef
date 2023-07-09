@@ -21,7 +21,7 @@ class LaravelEmailChefFacadeTest extends TestCase
             });
 
         \LaravelEmailChef::test();
-
+ 
         $this->assertTrue(true);
     }
 }

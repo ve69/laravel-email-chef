@@ -8,8 +8,9 @@ class LaravelEmailChef
 {
     private $username;
     private $password;
-    private $authkey;
+    protected $login_url;
     protected $baseUrl;
+    private $authkey;
     protected $header;
 
     public function __construct()
@@ -18,16 +19,18 @@ class LaravelEmailChef
 
         $this->setPassword();
 
-        $this->setAuthkey();
+        $this->setLoginUrl();
 
         $this->setBaseUrl();
+
+        $this->setAuthkey();
 
         $this->setHeader();
     }
 
     public function login()
     {
-        $url = $this->getBaseUrl() . 'login';
+        $url = $this->getLoginUrl() . 'login';
 
         $result = Http::withHeaders([
             'Accept' => 'application/json; charset=utf-8',
@@ -35,13 +38,18 @@ class LaravelEmailChef
             'username' => $this->getUsername(),
             'password' => $this->getPassword()
         ]);
-        dd($result->body());
+
+        //TODO: check result status and handle errors
+
+        $result = json_decode($result->body());
+
+        return $result->authkey;
     }
 
     private function setHeader()
     {
         $this->header = Http::withHeaders([
-            'Content-Type' => 'application/json; charset=utf-8',
+            'Accept' => 'application/json; charset=utf-8',
             'authkey' => $this->getAuthkey(),
         ]);
     }
@@ -73,7 +81,9 @@ class LaravelEmailChef
 
     private function setAuthkey(): void
     {
-        $this->authkey = 'e03061855eed6248119619f5b4bc279ece6443ca';
+        $authkey = $this->login();
+
+        $this->authkey = $authkey;
     }
 
     private function setBaseUrl(): void
@@ -84,5 +94,15 @@ class LaravelEmailChef
     private function getBaseUrl()
     {
         return $this->baseUrl;
+    }
+
+    public function getLoginUrl()
+    {
+        return $this->login_url;
+    }
+
+    public function setLoginUrl(): void
+    {
+        $this->login_url = config('email-chef.login_url');
     }
 }
