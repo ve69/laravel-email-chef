@@ -18,7 +18,6 @@ You can publish and run the migrations with:
 
 ```bash
 php artisan vendor:publish --provider="OfflineAgency\LaravelEmailChef\LaravelEmailChefServiceProvider" --tag="laravel-email-chef-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -30,6 +29,17 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'baseUrl' => 'https://app.emailchef.com/apps/api/v1/',
+
+    'login_url' => 'https://app.emailchef.com/api/',
+
+    'username' =>  env('EMAIL_CHEF_USERNAME'),
+
+    'password' => env('EMAIL_CHEF_PASSWORD'),
+
+    'list_id' => '97322',
+    
+    'contact_id' => '656023'
 ];
 ```
 
@@ -38,7 +48,43 @@ return [
 ```php
 $laravel-email-chef = new OfflineAgency\LaravelEmailChef();
 echo $laravel-email-chef->echoPhrase('Hello, OfflineAgency!');
+
+//Create list
+
+
 ```
+
+## API coverage
+
+We are currently work on this package to implement all endpoints. Enable notifications to be notified when new API are released.
+
+❌ Account
+
+❌ Account infos
+
+❌ Subscription
+
+✅ Lists
+
+✅ Contacts
+
+❌ Predefined Fields
+
+❌ Custom Fields
+
+❌ Blockings
+
+❌ Import Tasks
+
+❌ Segments
+
+❌ Campaigns
+
+❌ Autoresponders
+
+❌ Send mail
+
+❌ SMS
 
 ## Testing
 
@@ -56,8 +102,8 @@ If you discover any security-related issues, please email support@offlineagency.
 
 ## Credits
 
-- [Offline Agency](https://github.com/ManuelRomanato)
-- [Manuel Romanato](https://github.com/offline-agency)
+- [Offline Agency](https://github.com/offline-agency)
+- [Manuel Romanato](https://github.com/ManuelRomanato)
 - [All Contributors](../../contributors)
 
 ## License

@@ -15,8 +15,8 @@ use OfflineAgency\LaravelEmailChef\Entities\Lists\UpdateList;
 class ListsApi extends Api
 {
     public function getCollection(
-        ?int $limit,
-        ?int $offset,
+        ?int    $limit,
+        ?int    $offset,
         ?string $orderby,
         ?string $order_type
     )
@@ -120,7 +120,7 @@ class ListsApi extends Api
 
     public function update(
         string $list_id,
-        array $instance_in
+        array  $instance_in
     )
     {
         $validator = Validator::make($instance_in, [
