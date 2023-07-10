@@ -154,7 +154,7 @@ class ContactsTest extends TestCase
                 'lastname' => 'Ferrari',
                 'custom_fields' => [[
                     'test' => 'OK'
-                ]],
+                ]]
             ]
         );
 
