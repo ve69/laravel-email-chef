@@ -132,7 +132,7 @@ class ContactsTest extends TestCase
             'lastname' => 'Agostini',
             'custom_fields' => [[
                 'test' => 'OK'
-            ]],
+            ]]
         ]);
 
         $this->assertInstanceOf(CreatedContactEntity::class, $response);
