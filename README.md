@@ -1,7 +1,7 @@
 # Laravel Email Chef API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/offlineagency/laravel-email-chef.svg?style=flat-square)](https://packagist.org/packages/offlineagency/laravel-email-chef)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/offlineagency/laravel-email-chef/run-tests?label=tests)](https://github.com/offlineagency/laravel-email-chef/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/offlineagency/laravel-email-chef/run-tests?label=tests)](https://github.com/offlineagency/laravel-email-chef/actions/workflows/main.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/offlineagency/laravel-email-chef/Check%20&%20fix%20styling?label=code%20style)](https://github.com/offlineagency/laravel-email-chef/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/offlineagency/laravel-email-chef.svg?style=flat-square)](https://packagist.org/packages/offlineagency/laravel-email-chef)
 ---
@@ -49,9 +49,23 @@ return [
 $laravel-email-chef = new OfflineAgency\LaravelEmailChef();
 echo $laravel-email-chef->echoPhrase('Hello, OfflineAgency!');
 
-//Create list
+//List create
+$list = new ListsApi();
+$list->create([
+    'list_name' => 'OA list name',
+    'list_description' => 'description'
+]);
 
+//List unsubscribe
+$list = new ListsApi();
+$list->unsubscribe(
+    97322, //list_id
+    53998920 //contact_id
+);
 
+//Contacts get count
+$contacts = new ContactsApi;
+$contacts->count(config('email-chef.list_id'));
 ```
 
 ## API coverage
