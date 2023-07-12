@@ -1,8 +1,8 @@
 # Laravel Email Chef API
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/offlineagency/laravel-email-chef.svg?style=flat-square)](https://packagist.org/packages/offlineagency/laravel-email-chef)
-[![Github Action Status](https://github.com/offline-agency/laravel-email-chef/actions/workflows/main.yml/badge.svg)](https://github.com/offline-agency/laravel-email-chef/actions/workflows/main.yml)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/offlineagency/laravel-email-chef/Check%20&%20fix%20styling?label=code%20style)](https://github.com/offlineagency/laravel-email-chef/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![Latest Stable Version](https://poser.pugx.org/offline-agency/laravel-email-chef/v/stable)](https://packagist.org/packages/offline-agency/laravel-email-chef2)
+[![run-tests](https://github.com/offline-agency/laravel-email-chef/actions/workflows/main.yml/badge.svg)](https://github.com/offline-agency/laravel-email-chef/actions/workflows/main.yml)
+[![StyleCI](https://github.styleci.io/repos/557274815/shield)](https://styleci.io/repos/557274815)
 [![Total Downloads](https://img.shields.io/packagist/dt/offlineagency/laravel-email-chef.svg?style=flat-square)](https://packagist.org/packages/offlineagency/laravel-email-chef)
 ---
 ![Laravel Email Chef Integration](https://banners.beyondco.de/Laravel%20Email%20Chef%20API.png?theme=dark&packageManager=composer+require&packageName=offline-agency%2Flaravel-email-chef&pattern=charlieBrown&style=style_2&description=A+simple+Laravel+integration+with+Email+Chef+API&md=1&showWatermark=0&fontSize=100px&images=mail-open)
