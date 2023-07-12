@@ -2,6 +2,7 @@
 
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
@@ -34,8 +35,8 @@ class ListsApi extends Api
 
         $out = collect();
         foreach ($collections as $collection) {
-            $out->push(new
-            GetCollection($collection));
+            $collection->date = Carbon::parse($collection->date);
+            $out->push(new GetCollection($collection));
         }
 
         return $out;
