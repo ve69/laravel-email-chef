@@ -7,13 +7,13 @@
 [![Total Downloads](http://poser.pugx.org/offlineagency/laravel-email-chef/downloads)](https://packagist.org/packages/offlineagency/laravel-email-chef)
 [![PHP Version Require](http://poser.pugx.org/offlineagency/laravel-email-chef/require/php)](https://packagist.org/packages/offlineagency/laravel-email-chef)
 ---
-![Laravel Email Chef Integration](https://banners.beyondco.de/Laravel%20Email%20Chef%20API.png?theme=dark&packageManager=composer+require&packageName=offline-agency%2Flaravel-email-chef&pattern=charlieBrown&style=style_2&description=A+simple+Laravel+integration+with+Email+Chef+API&md=1&showWatermark=0&fontSize=100px&images=mail-open)
+![Laravel Email Chef Integration](https://banners.beyondco.de/Laravel%20Email%20Chef%20API.png?theme=dark&packageManager=composer+require&packageName=offlineagency%2Flaravel-email-chef&pattern=charlieBrown&style=style_2&description=A+simple+Laravel+integration+with+Email+Chef+API&md=1&showWatermark=0&fontSize=100px&images=mail-open)
 ## Installation
 
 You can install the package via composer:
 
 ```bash
-composer require offline-agency/laravel-email-chef
+composer require offlineagency/laravel-email-chef
 ```
 
 You can publish and run the migrations with:
