@@ -1,5 +1,5 @@
 {
-    "name": "offlineagency/laravel-email-chef",
+    "name": "offline-agency/laravel-email-chef",
     "description": "This is a simple Laravel package for integration with Email Chef API",
     "keywords": [
         "OfflineAgency",
