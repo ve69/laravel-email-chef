@@ -19,7 +19,7 @@ class ContactsTest extends TestCase
             'Accept' => 'application/json; charset=utf-8',
         ])->post('https://app.emailchef.com/api/' . 'login', [
             'username' => config('email-chef.username'),
-            'password' => ''
+            'password' => config('email-chef.password'),
         ]);
 
         $result_body = json_decode($result->body());
