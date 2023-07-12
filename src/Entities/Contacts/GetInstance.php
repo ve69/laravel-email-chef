@@ -26,5 +26,4 @@ class GetInstance extends AbstractEntity
     public bool $blacklisted;
     public array $customFields;
     public int $rating;
-
 }

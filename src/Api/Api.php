@@ -35,7 +35,6 @@ class Api extends LaravelEmailChef
 
         $response_status = $response->status();
 
-
 //        if ($response_status === 403 || $response_status === 429) {
 //            $this->waitThrottle($response_status);
 //
@@ -96,7 +95,6 @@ class Api extends LaravelEmailChef
 
         return $parsed_data;
     }
-
 
     private function waitThrottle(
         int $status

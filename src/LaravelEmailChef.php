@@ -34,31 +34,29 @@ class LaravelEmailChef
      */
     public function login()
     {
-        $url = $this->getLoginUrl() . 'login';
+        $url = $this->getLoginUrl().'login';
         $username = $this->getUsername();
         $password = $this->getPassword();
 
-        if(is_null($username) || is_null($password)){
-            throw new Exception("Missing Credentials! Please add your credentials on .env file.");
+        if (is_null($username) || is_null($password)) {
+            throw new Exception('Missing Credentials! Please add your credentials on .env file.');
         }
         $result = Http::withHeaders([
             'Accept' => 'application/json; charset=utf-8',
         ])->post($url, [
             'username' => $this->getUsername(),
-            'password' => $this->getPassword()
+            'password' => $this->getPassword(),
         ]);
-
-
 
         //TODO: check result status and handle errors
 
         $result = json_decode($result->body());
 
-        if($result->message === 'error_credential_wrong'){
-            throw new Exception("Auth Error! Wrong Credentials. Please check your credentials.");
+        if ($result->message === 'error_credential_wrong') {
+            throw new Exception('Auth Error! Wrong Credentials. Please check your credentials.');
         }
 
-        $this->setAuthKey($result->authkey); ;
+        $this->setAuthKey($result->authkey);
     }
 
     private function setHeader()
