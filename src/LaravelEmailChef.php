@@ -2,6 +2,7 @@
 
 namespace OfflineAgency\LaravelEmailChef;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 
 class LaravelEmailChef
@@ -23,15 +24,23 @@ class LaravelEmailChef
 
         $this->setBaseUrl();
 
-        $this->setAuthkey();
+        $this->login();
 
         $this->setHeader();
     }
 
+    /**
+     * @throws Exception
+     */
     public function login()
     {
         $url = $this->getLoginUrl() . 'login';
+        $username = $this->getUsername();
+        $password = $this->getPassword();
 
+        if(is_null($username) || is_null($password)){
+            throw new Exception("Missing Credentials! Please add your credentials on .env file.");
+        }
         $result = Http::withHeaders([
             'Accept' => 'application/json; charset=utf-8',
         ])->post($url, [
@@ -39,18 +48,24 @@ class LaravelEmailChef
             'password' => $this->getPassword()
         ]);
 
+
+
         //TODO: check result status and handle errors
 
         $result = json_decode($result->body());
 
-        return $result->authkey;
+        if($result->message === 'error_credential_wrong'){
+            throw new Exception("Auth Error! Wrong Credentials. Please check your credentials.");
+        }
+
+        $this->setAuthKey($result->authkey); ;
     }
 
     private function setHeader()
     {
         $this->header = Http::withHeaders([
             'Accept' => 'application/json; charset=utf-8',
-            'authkey' => $this->getAuthkey(),
+            'authkey' => $this->getAuthKey(),
         ]);
     }
 
@@ -74,16 +89,14 @@ class LaravelEmailChef
         $this->username = config('email-chef.username');
     }
 
-    private function getAuthkey()
+    public function getAuthKey()
     {
         return $this->authkey;
     }
 
-    private function setAuthkey(): void
+    private function setAuthKey($authKey): void
     {
-        $authkey = $this->login();
-
-        $this->authkey = $authkey;
+        $this->authkey = $authKey;
     }
 
     private function setBaseUrl(): void

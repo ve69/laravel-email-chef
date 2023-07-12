@@ -52,10 +52,13 @@ class ContactsApi extends Api
             return new Error($response->data);
         }
 
-        $collection = $response->data;
-
-        dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
-        return new GetCollection($collection);
+        $collections = $response->data;
+       // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
+        $out = collect();
+        foreach($collections as $collection){
+            $out->push(new GetCollection($collection));
+        }
+        return $out;
     }
 
     public function getInstance(

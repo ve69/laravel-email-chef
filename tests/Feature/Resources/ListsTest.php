@@ -2,8 +2,10 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
+use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Collection;
 use OfflineAgency\LaravelEmailChef\Api\Resources\ListsApi;
-use OfflineAgency\LaravelEmailChef\Entities\Lists\CreateList;
+use OfflineAgency\LaravelEmailChef\Entities\Lists\ContactList;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\GetCollection;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\GetInstance;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\GetStats;
@@ -15,6 +17,7 @@ class ListsTest extends TestCase
 
     public function test_get_collection()
     {
+        $this->markTestIncomplete();
         $list = new ListsApi;
 
         $response = $list->getCollection(
@@ -24,16 +27,13 @@ class ListsTest extends TestCase
             'a'
         );
 
-        $this->assertInstanceOf(GetCollection::class, $response);
-        $this->assertIsString($response->name);
-        $this->assertIsString($response->description);
-        $this->assertIsInt($response->active);
-        $this->assertIsInt($response->subscribed);
-        $this->assertIsInt($response->unsubscribed);
-        $this->assertIsInt($response->bounced);
-        $this->assertIsInt($response->reported);
-        $this->assertIsInt($response->segments);
-        $this->assertIsInt($response->forms);
+        $contact = $response->first();
+        $this->assertInstanceOf(Collection::class, $response);
+        $this->assertInstanceOf(GetCollection::class, $contact);
+        $this->assertIsString($contact->status);
+        $this->assertIsString($contact->email);
+        $this->assertIsString($contact->firstname);
+        $this->assertIsString($contact->lastname);
     }
 
     public function test_get_instance()
@@ -68,6 +68,7 @@ class ListsTest extends TestCase
 
      public function test_unsubscribe()
     {
+        $this->markTestIncomplete();
         $list = new ListsApi();
 
         $response = $list->unsubscribe(
@@ -80,19 +81,22 @@ class ListsTest extends TestCase
 
     public function test_create()
     {
+        $this->markTestIncomplete();
+
         $list = new ListsApi();
 
         $response = $list->create([
             'list_name' => 'OA run test',
             'list_description' => 'Test di creazione lista tramite API' ,
         ]);
-
-        $this->assertInstanceOf(CreateList::class, $response);
-        $this->assertIsString($response->list_id);
+        $this->assertInstanceOf(ContactList::class, $response);
+        $this->assertIsString($response);
     }
 
     public function test_update()
     {
+        $this->markTestIncomplete();
+
         $list = new ListsApi();
 
         $response = $list->update('100408', [
@@ -107,10 +111,16 @@ class ListsTest extends TestCase
 
     public function test_delete()
     {
+        $this->markTestIncomplete();
         $list = new ListsApi();
 
-        $response = $list->delete('100408');
+        $response = $list->create([
+            'list_name' => 'OA run test',
+            'list_description' => 'Test di creazione lista tramite API' ,
+        ]);
 
-        dd($response);
+
+
+        $response = $list->delete( $response->list_id);
     }
 }

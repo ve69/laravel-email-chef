@@ -16,11 +16,10 @@ class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
-
         Config::set('email-chef.baseUrl', 'https://app.emailchef.com/apps/api/v1/');
         Config::set('email-chef.login_url', 'https://app.emailchef.com/api/');
-        Config::set('email-chef.username', '');
-        Config::set('email-chef.password', '');
+        Config::set('email-chef.username', env('EMAIL_CHEF_USERNAME'));
+        Config::set('email-chef.password', env('EMAIL_CHEF_PASSWORD'));
         Config::set('email-chef.list_id', '97322');
 
         Factory::guessFactoryNamesUsing(

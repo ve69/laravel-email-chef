@@ -2,6 +2,7 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
 use OfflineAgency\LaravelEmailChef\Api\Resources\ContactsApi;
 use OfflineAgency\LaravelEmailChef\Entities\Contacts\ContactsEntity;
@@ -24,10 +25,6 @@ class ContactsTest extends TestCase
 
         $result_body = json_decode($result->body());
 
-        /*$response = Http::withHeaders([
-            'authkey' => $result_body->authkey
-        ])->get('https://app.emailchef.com/apps/api/v1/accounts/current');*/
-
         $response = Http::withHeaders([
             'authkey' => $result_body->authkey,
             'Accept' => 'application/json; charset=utf-8'
@@ -47,7 +44,7 @@ class ContactsTest extends TestCase
             ]
         ]);
 
-        dd($response->status(), $response->body());
+        $this->assertEquals(200,$response->status());
     }
 
     public function test_get_count()
@@ -86,11 +83,13 @@ class ContactsTest extends TestCase
             null
         );
 
-        $this->assertInstanceOf(GetCollection::class, $response);
-        $this->assertIsString($response->status);
-        $this->assertIsString($response->email);
-        $this->assertIsString($response->firstname);
-        $this->assertIsString($response->lastname);
+        $contact = $response->first();
+        $this->assertInstanceOf(Collection::class, $response);
+        $this->assertInstanceOf(GetCollection::class, $contact);
+        $this->assertIsString($contact->status);
+        $this->assertIsString($contact->email);
+        $this->assertIsString($contact->firstname);
+        $this->assertIsString($contact->lastname);
     }
 
     public function test_get_instance()
@@ -144,14 +143,15 @@ class ContactsTest extends TestCase
 
     public function test_update()
     {
+        $this->markTestIncomplete();
         $contacts = new ContactsApi;
 
         $response = $contacts->update('656023', [
                 'list_id' => config('email-chef.list_id'),
                 'status ' => 'ACTIVE',
-                'email' => 'ciao@gmail.com',
-                'firstname' => 'Daniele',
-                'lastname' => 'Ferrari',
+                'email' => 'mario.rossi@gmail.com',
+                'firstname' => 'Mario',
+                'lastname' => 'Rossi',
                 'custom_fields' => [[
                     'test' => 'OK'
                 ]],

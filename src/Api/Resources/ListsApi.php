@@ -6,7 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
-use OfflineAgency\LaravelEmailChef\Entities\Lists\CreateList;
+use OfflineAgency\LaravelEmailChef\Entities\Lists\ContactList;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\GetCollection;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\GetInstance;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\GetStats;
@@ -32,9 +32,14 @@ class ListsApi extends Api
             return new Error($response->data);
         }
 
-        $collection = $response->data;
+        $collections = $response->data;
 
-        return new GetCollection($collection);
+        $out = collect();
+        foreach($collections as $collection){
+            $out->push(new
+            GetCollection($collection));
+        }
+        return $out;
     }
 
     public function getInstance(
@@ -115,7 +120,7 @@ class ListsApi extends Api
 
         $list = $response->data;
 
-        return new CreateList($list);
+        return new ContactList($list);
     }
 
     public function update(
