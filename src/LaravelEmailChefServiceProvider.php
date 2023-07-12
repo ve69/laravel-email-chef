@@ -10,7 +10,7 @@ class LaravelEmailChefServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/email-chef.php' => config_path('email-chef.php'),
+                __DIR__.'/../config/email-chef.php' => config_path('email-chef.php'),
             ], 'config');
         }
     }
@@ -19,7 +19,7 @@ class LaravelEmailChefServiceProvider extends ServiceProvider
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/email-chef.php',
+            __DIR__.'/../config/email-chef.php',
             'email-chef'
         );
 

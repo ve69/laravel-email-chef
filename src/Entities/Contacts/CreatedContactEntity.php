@@ -10,5 +10,4 @@ class CreatedContactEntity extends AbstractEntity
     public string $contact_id;
     public string $contact_status;
     public bool $updated;
-
 }

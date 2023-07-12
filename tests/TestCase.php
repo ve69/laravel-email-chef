@@ -2,13 +2,12 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests;
 
-use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
-use Orchestra\Testbench\TestCase as BaseTestCase;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Illuminate\Support\Facades\Config;
 use OfflineAgency\LaravelEmailChef\LaravelEmailChefFacade;
 use OfflineAgency\LaravelEmailChef\LaravelEmailChefServiceProvider;
-use Orchestra\Testbench\Concerns\CreatesApplication;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {

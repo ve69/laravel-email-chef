@@ -2,7 +2,6 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
-use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Collection;
 use OfflineAgency\LaravelEmailChef\Api\Resources\ListsApi;
 use OfflineAgency\LaravelEmailChef\Entities\Lists\ContactList;
@@ -14,7 +13,6 @@ use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class ListsTest extends TestCase
 {
-
     public function test_get_collection()
     {
         $this->markTestIncomplete();
@@ -60,24 +58,24 @@ class ListsTest extends TestCase
         );
 
         $this->assertInstanceOf(GetStats::class, $response);
-        $this->assertIsArray( $response->total_list);
-        $this->assertIsArray( $response->daily_delta_list);
-        $this->assertIsString( $response->start_date);
-        $this->assertIsString( $response->last_date);
+        $this->assertIsArray($response->total_list);
+        $this->assertIsArray($response->daily_delta_list);
+        $this->assertIsString($response->start_date);
+        $this->assertIsString($response->last_date);
     }
 
      public function test_unsubscribe()
-    {
-        $this->markTestIncomplete();
-        $list = new ListsApi();
+     {
+         $this->markTestIncomplete();
+         $list = new ListsApi();
 
-        $response = $list->unsubscribe(
-            97322,
-            53998920
-        );
+         $response = $list->unsubscribe(
+             97322,
+             53998920
+         );
 
         //
-    }
+     }
 
     public function test_create()
     {
@@ -87,7 +85,7 @@ class ListsTest extends TestCase
 
         $response = $list->create([
             'list_name' => 'OA run test',
-            'list_description' => 'Test di creazione lista tramite API' ,
+            'list_description' => 'Test di creazione lista tramite API',
         ]);
         $this->assertInstanceOf(ContactList::class, $response);
         $this->assertIsString($response);
@@ -100,9 +98,9 @@ class ListsTest extends TestCase
         $list = new ListsApi();
 
         $response = $list->update('100408', [
-                'list_name' => 'Lista personalizzata OA',
-                'list_description' => 'Test di modifica per lista'
-            ]
+            'list_name' => 'Lista personalizzata OA',
+            'list_description' => 'Test di modifica per lista',
+        ]
         );
 
         $this->assertInstanceOf(UpdateList::class, $response);
@@ -116,11 +114,9 @@ class ListsTest extends TestCase
 
         $response = $list->create([
             'list_name' => 'OA run test',
-            'list_description' => 'Test di creazione lista tramite API' ,
+            'list_description' => 'Test di creazione lista tramite API',
         ]);
 
-
-
-        $response = $list->delete( $response->list_id);
+        $response = $list->delete($response->list_id);
     }
 }

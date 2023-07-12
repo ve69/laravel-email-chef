@@ -11,5 +11,5 @@ return [
 
     'list_id' => '97322',
 
-    'contact_id' => '656023'
+    'contact_id' => '656023',
 ];
