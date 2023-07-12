@@ -1,7 +1,7 @@
 # Laravel Email Chef API
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/offlineagency/laravel-email-chef.svg?style=flat-square)](https://packagist.org/packages/offlineagency/laravel-email-chef)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/offlineagency/laravel-email-chef/run-tests?label=tests)](https://github.com/offlineagency/laravel-email-chef/actions/workflows/main.yml)
+[![Github Action Status](https://github.com/offline-agency/laravel-email-chef/actions/workflows/main.yml/badge.svg)](https://github.com/offline-agency/laravel-email-chef/actions/workflows/main.yml)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/offlineagency/laravel-email-chef/Check%20&%20fix%20styling?label=code%20style)](https://github.com/offlineagency/laravel-email-chef/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/offlineagency/laravel-email-chef.svg?style=flat-square)](https://packagist.org/packages/offlineagency/laravel-email-chef)
 ---
