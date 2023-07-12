@@ -10,5 +10,6 @@ return [
     'password' => env('EMAIL_CHEF_PASSWORD'),
 
     'list_id' => '97322',
+
     'contact_id' => '656023',
 ];

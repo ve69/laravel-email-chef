@@ -16,7 +16,7 @@ class GetInstance extends AbstractEntity
     public string $city;
     public string $added_by;
     public string $addition_time;
-    public ?int $removed_by;
+    public ?string $removed_by;
     public bool $privacy_accepted;
     public ?Carbon $privacy_accepted_date;
     public bool $terms_accepted;
@@ -26,5 +26,4 @@ class GetInstance extends AbstractEntity
     public bool $blacklisted;
     public array $customFields;
     public int $rating;
-
 }

@@ -14,5 +14,4 @@ class ContactsEntity extends AbstractEntity
     public array $options;
     public string $text;
     public string $default_value;
-
 }

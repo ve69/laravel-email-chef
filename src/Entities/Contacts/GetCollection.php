@@ -11,5 +11,4 @@ class GetCollection extends AbstractEntity
     public string $firstname;
     public string $lastname;
     public ?string $ip;
-
 }
