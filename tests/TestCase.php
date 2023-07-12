@@ -2,7 +2,8 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests;
 
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
+use Orchestra\Testbench\TestCase as BaseTestCase;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Config;
 use OfflineAgency\LaravelEmailChef\LaravelEmailChefFacade;
@@ -11,8 +12,6 @@ use Orchestra\Testbench\Concerns\CreatesApplication;
 
 class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,5 +39,13 @@ class TestCase extends BaseTestCase
         return [
             'LaravelEmailChef' => LaravelEmailChefFacade::class,
         ];
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        // make sure, our .env file is loaded
+        $app->useEnvironmentPath(__DIR__.'/..');
+        $app->bootstrapWith([LoadEnvironmentVariables::class]);
+        parent::getEnvironmentSetUp($app);
     }
 }
