@@ -81,7 +81,10 @@ class ListsApi extends Api
         string $list_id,
         string $contact_id
     ) {
-        $response = $this->get('lists/'.$list_id.'/unsubscribe?contact_id='.$contact_id.'&list_id='.$list_id);
+        $response = $this->get('lists/'.$list_id.'/unsubscribe?contact_id='.$contact_id.'$contact_idlist_id='.$list_id, [
+            'contact_id' => $contact_id,
+            'list_id' => $list_id,
+        ]);
 
         if (! $response->success) {
             return new Error($response->data);

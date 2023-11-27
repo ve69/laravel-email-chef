@@ -64,18 +64,18 @@ class ListsTest extends TestCase
         $this->assertIsString($response->last_date);
     }
 
-     public function test_unsubscribe()
-     {
-         $this->markTestIncomplete();
-         $list = new ListsApi();
+    public function test_unsubscribe()
+    {
+        $this->markTestIncomplete();
+        $list = new ListsApi();
 
-         $response = $list->unsubscribe(
-             97322,
-             53998920
-         );
+        $response = $list->unsubscribe(
+            97322,
+            53998920
+        );
 
         //
-     }
+    }
 
     public function test_create()
     {
