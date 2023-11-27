@@ -15,19 +15,20 @@ use OfflineAgency\LaravelEmailChef\Entities\Lists\UpdateList;
 class ListsApi extends Api
 {
     public function getCollection(
-        ?int $limit,
-        ?int $offset,
+        ?int    $limit,
+        ?int    $offset,
         ?string $orderby,
         ?string $order_type
-    ) {
-        $response = $this->get('lists?limit='.$limit.'&offset='.$offset.'&orderby='.$orderby.'&ordertype='.$order_type, [
+    )
+    {
+        $response = $this->get('lists?limit=' . $limit . '&offset=' . $offset . '&orderby=' . $orderby . '&ordertype=' . $order_type, [
             'limit' => $limit,
             'offset' => $offset,
             'orderby' => $orderby,
             'order_type' => $order_type,
         ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
@@ -44,12 +45,13 @@ class ListsApi extends Api
 
     public function getInstance(
         int $id
-    ) {
-        $response = $this->get('lists/'.$id, [
+    )
+    {
+        $response = $this->get('lists/' . $id, [
             'id' => $id,
         ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
@@ -62,13 +64,14 @@ class ListsApi extends Api
         string $list_id,
         string $start_date,
         string $end_date
-    ) {
-        $response = $this->get('lists/'.$list_id.'/stats?start_date='.$start_date.'&end_date='.$end_date, [
+    )
+    {
+        $response = $this->get('lists/' . $list_id . '/stats?start_date=' . $start_date . '&end_date=' . $end_date, [
             'start_date' => $start_date,
             'end_date' => $end_date,
         ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
@@ -80,22 +83,27 @@ class ListsApi extends Api
     public function unsubscribe(
         string $list_id,
         string $contact_id
-    ) {
-        $response = $this->get('lists/'.$list_id.'/unsubscribe?contact_id='.$contact_id.'&list_id='.$list_id);
+    )
+    {
+        $response = $this->get('lists/' . $list_id . '/unsubscribe?contact_id=' . $contact_id . '$contact_idlist_id=' . $list_id, [
+            'contact_id' => $contact_id,
+            'list_id' => $list_id
+        ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
         //this endpoint does not return response
         /*$result = $response->data;*/
 
-        return 'Actually Contact #'.$contact_id.' is not in your list';
+        return 'Actually Contact #' . $contact_id . ' is not in your list';
     }
 
     public function create(
         array $instance_in
-    ) {
+    )
+    {
         $validator = Validator::make($instance_in, [
             'list_name' => 'required',
             'list_description' => 'string',
@@ -109,7 +117,7 @@ class ListsApi extends Api
             'instance_in' => $instance_in,
         ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
@@ -120,8 +128,9 @@ class ListsApi extends Api
 
     public function update(
         string $list_id,
-        array $instance_in
-    ) {
+        array  $instance_in
+    )
+    {
         $validator = Validator::make($instance_in, [
             'list_name' => 'required',
             'list_description' => 'string',
@@ -131,11 +140,11 @@ class ListsApi extends Api
             return $validator->errors();
         }
 
-        $response = $this->put('lists/'.$list_id, [
+        $response = $this->put('lists/' . $list_id, [
             'instance_in' => $instance_in,
         ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
@@ -146,13 +155,14 @@ class ListsApi extends Api
 
     public function delete(
         string $list_id
-    ) {
-        $response = $this->destroy('lists/'.$list_id);
+    )
+    {
+        $response = $this->destroy('lists/' . $list_id);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
-        return 'List #'.$list_id.' deleted';
+        return 'List #' . $list_id . ' deleted';
     }
 }
