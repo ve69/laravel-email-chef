@@ -7,5 +7,5 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 class UpdatedCustomFieldsEntity extends AbstractEntity
 {
     public bool $updated;
-    //Forse vanno aggiunte altre varibili
+    public int $custom_field_id;
 }
