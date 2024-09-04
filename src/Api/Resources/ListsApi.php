@@ -27,7 +27,7 @@ class ListsApi extends Api
             'order_type' => $order_type,
         ]);
 
-        if (! $response->success) {
+        if (!$response->success) {
             return new Error($response->data);
         }
 
@@ -105,7 +105,7 @@ class ListsApi extends Api
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors();
+            return $validator->errors(); //LANCIAMO UN ERRORE??
         }
 
         $response = $this->post('lists', [
