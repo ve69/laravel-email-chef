@@ -97,7 +97,7 @@ class ListsApi extends Api
     }
 
     public function create(
-        array $instance_in
+        array $instance_in = []
     ) {
         $validator = Validator::make($instance_in, [
             'list_name' => 'required',
@@ -105,7 +105,7 @@ class ListsApi extends Api
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors(); //LANCIAMO UN ERRORE??
+            return $validator->errors();
         }
 
         $response = $this->post('lists', [
@@ -123,7 +123,7 @@ class ListsApi extends Api
 
     public function update(
         string $list_id,
-        array $instance_in
+        array $instance_in = []
     ) {
         $validator = Validator::make($instance_in, [
             'list_name' => 'required',

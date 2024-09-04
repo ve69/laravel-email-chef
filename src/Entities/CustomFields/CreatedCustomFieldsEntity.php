@@ -6,5 +6,7 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class CreatedCustomFieldsEntity extends AbstractEntity
 {
-    /* Non so cosa mettere */
+    public string $status;
+    public int $custom_field_id;
+    public bool $updated; //Lo mettiamo come in contacts?
 }

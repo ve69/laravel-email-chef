@@ -3,9 +3,9 @@
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
 use Illuminate\Support\Facades\Validator;
-use OfflineAgency\LaravelChef\Entities\CustomFields\UpdatedCustomFieldsEntity;
+use OfflineAgency\LaravelEmailChef\Entities\CustomFields\UpdatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Api\Api;
-use OfflineAgency\LaraEmail\Entities\CustomFields\CountCustomFieldsEntity;
+use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CountCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CreatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\GetCollection;
@@ -17,7 +17,7 @@ class CustomFieldsApi extends Api
     public function getCollection(
         int $list_id
     ) {
-        $response = $this->get('lists/'.$list_id.'/custom-fields', [
+        $response = $this->get('lists/'.$list_id.'/customfields', [
             'list_id' => $list_id,
         ]);
 
@@ -26,10 +26,10 @@ class CustomFieldsApi extends Api
         }
 
         $collection = $response->data;
-
+            // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
         $out = collect();
         foreach ($collection as $collectionItem) {
-            $out->push(new GetCollection($collectionItem));//Qui come devo fare?
+            $out->push(new GetCollection($collectionItem));
         }
 
         return $out;
@@ -46,15 +46,15 @@ class CustomFieldsApi extends Api
             return new Error($response->data);
         }
 
-        $instance = $response->data;
+        $customfield = $response->data;
 
-        return new GetInstance($instance);
+        return new GetInstance($customfield);
     }
 
     public function count(
         int $list_id
     ) {
-        $response = $this->get('lists/'.$list_id.'/custom-fields/count', [
+        $response = $this->get('lists/'.$list_id.'/customfields/count', [
             'list_id' => $list_id,
         ]);
 
@@ -72,29 +72,27 @@ class CustomFieldsApi extends Api
         array $instance_in = []
     ) {
         $validator = Validator::make($instance_in, [
-            'data_type' => 'required',
+            'data_type' => 'string',
             'name' => 'string',
             'place_holder' => 'string',
             'default_value' => 'integer'
         ]);
 
         if ($validator->fails()) {
-            return new Error($validator->errors());
+            return $validator->errors();
         }
 
         $response = $this->post('lists/'.$list_id.'/customfields', [
-            'instance_in' => array_merge($instance_in, [
-                //Non so cosa mettere
-            ]),
+            'instance_in' => $instance_in,
         ]);
 
         if (!$response->success) {
             return new Error($response->data);
         }
 
-        $instance = $response->data;
+        $customfield = $response->data;
 
-        return new CreatedCustomFieldsEntity($instance);
+        return new CreatedCustomFieldsEntity($customfield);
     }
 
     public function update(
@@ -107,22 +105,27 @@ class CustomFieldsApi extends Api
             'type_id' => 'integer',
             'place_holder' => 'string',
             'options' => 'array',
-            'default_value' => 'integer'
-        ]); //QUALI BISOGNA VALIDARE
+            'default_value' => 'integer',
+            'admin_only' => 'integer',
+            'ord' =>  'array',
+            'data_type' => 'string',
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
 
         $response = $this->put('lists/customfields/'.$field_id, [
-            'instance_in' => array_merge($instance_in, [
-
-            ]),
+            'instance_in' => $instance_in,
         ]);
 
         if (!$response->success) {
             return new Error($response->data);
         }
 
-        $instance = $response->data;
+        $customfield = $response->data;
 
-        return new UpdatedCustomFieldsEntity($instance);
+        return new UpdatedCustomFieldsEntity($customfield);
     }
 
     public function delete(
@@ -137,16 +140,4 @@ class CustomFieldsApi extends Api
 
         return 'CustomFields #'.$field_id.' deleted';
     }
-
-
-
-
-
-
-
-
-
-
-
 }
-

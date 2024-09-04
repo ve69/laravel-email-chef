@@ -51,7 +51,7 @@ class ContactsApi extends Api
         }
 
         $collections = $response->data;
-        // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
+            // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
         $out = collect();
         foreach ($collections as $collection) {
             $out->push(new GetCollection($collection));
@@ -64,6 +64,7 @@ class ContactsApi extends Api
         int $contact_id,
         int $list_id
     ) {
+
         $response = $this->get('contacts/'.$contact_id.'?list_id='.$list_id, [
             'contact_id' => $contact_id,
             'list_id' => $list_id,

@@ -2,10 +2,18 @@
 
 namespace OfflineAgency\LaravelEmailChef\Entities\CustomFields;
 
-use Carbon\Carbon;
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class GetInstance extends AbstractEntity
 {
-    /* Non so che variabili inserire perché esistono già tutte nella classe CustomFieldsEntity */
+    public int $id;
+    public int $list_id;
+    public string $name;
+    public int $type_id;
+    public string $place_holder;
+    public array $options;
+    public string $default_value;
+    public int $admin_only;
+    public int $ord;
+    public string $data_type;
 }
