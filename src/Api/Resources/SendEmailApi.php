@@ -8,10 +8,8 @@ use OfflineAgency\LaravelEmailChef\Entities\Error;
 
 class SendEmailApi extends Api
 {
-    private $error;
-
-    public function SendMail(
-        $body
+    public function sendMail(
+        array $body
     ) {
         $response = $this->post('sendmail ', $body);
 
@@ -23,5 +21,4 @@ class SendEmailApi extends Api
 
         return new SendMail($sendMail);
     }
-
 }
