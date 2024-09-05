@@ -4,7 +4,11 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Autoresponders;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class Count extends AbstractEntity
+class AutoresponderLinks extends AbstractEntity
 {
-    public $totalcount;
+    public string $url;
+
+    public string $name;
+
+    public string $id;
 }

@@ -4,15 +4,23 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Autoresponders;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class Collection extends AbstractEntity
+class AutoresponderCollection extends AbstractEntity
 {
     public string $id;
+
     public string $name;
+
     public string $trigger_id;
-    public $active;
-    public $hours_delay;
+
+    public string $active;
+
+    public string $hours_delay;
+
     public $sent;
-    public $open;
-    public $click;
+
+    public string $open;
+
+    public string $click;
+
     public $lists;
 }

@@ -5,23 +5,39 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Autoresponders;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class Instance extends AbstractEntity
+class Autoresponder extends AbstractEntity
 {
     public string $id;
+
     public string $account_id;
+
     public string $name;
-    public $type;
+
+    public string $type;
+
     public string $subject;
+
     public string $html_body;
-    public $text_body;
-    public $sender_id;
+
+    public string $text_body;
+
+    public string $sender_id;
+
     public $template_id;
-    public $reply_to_id;
-    public $sent_count_cache;
-    public $open_count_cache;
-    public $click_count_cache;
-    public $ga_enabled;
+
+    public string $reply_to_id;
+
+    public string $sent_count_cache;
+
+    public string $open_count_cache;
+
+    public string $click_count_cache;
+
+    public string $ga_enabled;
+
     public string $ga_campaign_title;
-    public object $autoreponder;
+
+    public object $autoresponder;
+
     public array $lists;
 }

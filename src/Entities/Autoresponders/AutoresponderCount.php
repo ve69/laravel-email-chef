@@ -4,7 +4,7 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Autoresponders;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class UpdateInstance extends AbstractEntity
+class AutoresponderCount extends AbstractEntity
 {
-    public object $body;
+    public string $totalcount;
 }

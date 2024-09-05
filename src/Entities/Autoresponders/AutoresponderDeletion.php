@@ -4,9 +4,9 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Autoresponders;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class LinksCollection extends AbstractEntity
+class AutoresponderDeletion extends AbstractEntity
 {
-    public string $url;
-    public string $name;
+    public string $status;
+
     public string $id;
 }

@@ -4,8 +4,7 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Autoresponders;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class Activate extends AbstractEntity
+class CreateAutoresponder extends AbstractEntity
 {
-    public string $status;
-    public $autoresponder_id;
+    public object $body;
 }
