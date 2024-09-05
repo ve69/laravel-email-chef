@@ -1,0 +1,27 @@
+<?php
+
+namespace OfflineAgency\LaravelEmailChef\Api\Resources;
+
+use OfflineAgency\LaravelEmailChef\Api\Api;
+use OfflineAgency\LaravelEmailChef\Entities\SendEmail\SendMail;
+use OfflineAgency\LaravelEmailChef\Entities\Error;
+
+class SendEmailApi extends Api
+{
+    private $error;
+
+    public function SendMail(
+        $body
+    ) {
+        $response = $this->post('sendmail ', $body);
+
+        if (! $response->success) {
+            return new Error($response->data);
+        }
+
+        $sendMail = $response->data;
+
+        return new SendMail($sendMail);
+    }
+
+}
