@@ -6,20 +6,25 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class StatusMessage extends AbstractEntity
 {
-    public string $bulk_id;
-    public $message_id;
+    public  $bulk_id;
 
-    public $to;
-    public $from;
+    public string $message_id;
+
+    public string $to;
+
+    public string $from;
+
     public string $text;
-    public $sent_at;
-    public $done_at;
 
-    public $sms_count;
+    public string $sent_at;
+
+    public string $done_at;
+
+    public int $sms_count;
 
     public object $price;
 
-    public $status;
+    public string $status;
 
-    public $error;
+    public string $error;
 }

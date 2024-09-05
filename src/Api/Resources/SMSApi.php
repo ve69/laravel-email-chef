@@ -31,7 +31,6 @@ class SMSApi extends Api
 
     public function getBalance()
     {
-
         $response = $this->get('sms/balance');
 
         if (! $response->success) {
@@ -44,7 +43,7 @@ class SMSApi extends Api
     }
 
     public function getStatusMessage(
-        $messageId
+        string $messageId
     ) {
 
         $response = $this->get('sms/status/' . $messageId);
@@ -59,7 +58,7 @@ class SMSApi extends Api
     }
 
     public function getBulkMessageStatus(
-        $bulkId
+        string $bulkId
     ) {
 
         $response = $this->get('sms/bulk/status/' . $bulkId);

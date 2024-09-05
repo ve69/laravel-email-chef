@@ -6,6 +6,7 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class Balance extends AbstractEntity
 {
-    public $balance;
-    public $currency;
+    public float $balance;
+
+    public string $currency;
 }

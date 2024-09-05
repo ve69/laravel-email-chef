@@ -7,19 +7,19 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 class BulkMessageStatus extends AbstractEntity
 {
     public string $bulk_id;
-    public $message_id;
+    public string $message_id;
 
-    public $to;
-    public $from;
+    public string $to;
+    public string $from;
     public string $text;
-    public $sent_at;
-    public $done_at;
+    public string $sent_at;
+    public string $done_at;
 
-    public $sms_count;
+    public int $sms_count;
 
     public object $price;
 
-    public $status;
+    public string $status;
 
-    public $error;
+    public string $error;
 }
