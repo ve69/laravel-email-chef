@@ -4,16 +4,15 @@ namespace OfflineAgency\LaravelEmailChef\Entities\ImportTasks;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class GetInstance extends AbstractEntity //todo: check if the flagged variables are necessary
+class GetInstance extends AbstractEntity
 {
-    public int $id;
-    public int $list_id;
-    public string $status; //necessary?
+    public string $id;
+    public string $list_id;
     public string $error_message;
-    public int $progress;
-    public int $imported;
-    public int $failed;
-    public string $last_updated; //necessary?
+    public string $progress;
+    public string $imported;
+    public string $failed;
+    public string $updated;
     public string $upload_file_name;
     public string $notification_link;
     public string $list_name;

@@ -49,7 +49,7 @@ class ImportTasksApi extends Api
         array $instance_in = []
     ) {
         $validator = Validator::make($instance_in, [
-            'contacts' => 'array', //todo: probably this's also required
+            'contacts' => 'required|array',
             'notification_link' => 'string',
         ]);
 
