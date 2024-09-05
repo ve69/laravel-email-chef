@@ -5,8 +5,7 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Campaigns;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class Archive extends AbstractEntity
+class UpdateCampaign extends AbstractEntity
 {
-    public $status;
-    public string $campaign_id;
+    public object $body;
 }

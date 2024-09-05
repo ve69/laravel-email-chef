@@ -7,6 +7,7 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class CancelScheduling extends AbstractEntity
 {
-    public $status;
+    public string $status;
+
     public string $campaign_id;
 }

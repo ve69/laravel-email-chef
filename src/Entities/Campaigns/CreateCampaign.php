@@ -5,7 +5,7 @@ namespace OfflineAgency\LaravelEmailChef\Entities\Campaigns;
 
 use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
-class CreateInstance extends AbstractEntity
+class CreateCampaign extends AbstractEntity
 {
     public object $body;
 }

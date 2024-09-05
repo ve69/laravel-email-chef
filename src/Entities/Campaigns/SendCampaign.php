@@ -7,5 +7,5 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class SendCampaign extends AbstractEntity
 {
-    public $status;
+    public string $status;
 }

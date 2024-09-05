@@ -8,6 +8,8 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 class LinkCollection extends AbstractEntity
 {
     public string $url;
+
     public string $name;
+
     public string $id;
 }
