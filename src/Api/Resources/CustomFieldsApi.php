@@ -28,7 +28,12 @@ class CustomFieldsApi extends Api
         $collection = $response->data;
             // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
         $out = collect();
-        foreach ($collection as $collectionItem) {
+        foreach ($collection as $collectionItem) {//todo: check if condition
+            // Set 'options' to an empty array if it's null
+            $collectionItem->options = $collectionItem->options ?? [];
+
+            // Set 'ord' to 0 if it's null
+            $collectionItem->ord = $collectionItem->ord ?? 0;
             $out->push(new GetCollection($collectionItem));
         }
 
