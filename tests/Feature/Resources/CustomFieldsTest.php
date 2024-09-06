@@ -23,19 +23,19 @@ class CustomFieldsTest extends TestCase
             108094
         );
 
-        $custom_fields = $response->first();
+        $custom_field = $response->first();
         //todo: check if "$this->assertInstanceOf(GetCollection::class, $custom_fields);" should be put
-        $this->assertInstanceOf(GetCollection::class, $custom_fields);
-        $this->assertIsInt($custom_fields->id);
-        $this->assertIsInt($custom_fields->list_id);
-        $this->assertIsString($custom_fields->name);
-        $this->assertIsInt($custom_fields->type_id);
-        $this->assertIsString($custom_fields->place_holder);
-        $this->assertIsArray($custom_fields->options);
-        $this->assertIsInt($custom_fields->default_value);
-        $this->assertIsInt($custom_fields->admin_only);
-        $this->assertIsInt($custom_fields->ord);
-        $this->assertIsString($custom_fields->data_type);
+        $this->assertInstanceOf(GetCollection::class, $custom_field);
+        $this->assertIsInt($custom_field->id);
+        $this->assertIsInt($custom_field->list_id);
+        $this->assertIsString($custom_field->name);
+        $this->assertIsInt($custom_field->type_id);
+        $this->assertIsString($custom_field->place_holder);
+        $this->assertIsArray($custom_field->options);
+        $this->assertIsInt($custom_field->default_value);
+        $this->assertIsInt($custom_field->admin_only);
+        $this->assertIsInt($custom_field->ord);
+        $this->assertIsString($custom_field->data_type);
     }
 
     public function test_get_instance()
