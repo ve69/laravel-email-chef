@@ -55,7 +55,7 @@ class BlockingsApi extends Api
         string $email,
         string $type
     ) {
-        $response = $this->get('blockings?email='.$email.'&type='.$type, []);
+        $response = $this->post('blockings?email='.$email.'&type='.$type, []);
 
         if (!$response->success) {
             return new Error($response->data);
