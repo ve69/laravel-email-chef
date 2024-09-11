@@ -43,7 +43,7 @@ class ListsApi extends Api
     }
 
     public function getInstance(
-        int $id
+        string $id
     ) {
         $response = $this->get('lists/'.$id, [
             'id' => $id,

@@ -11,7 +11,8 @@ use OfflineAgency\LaravelEmailChef\Entities\ImportTasks\GetInstance;
 
 class ImportTasksApi extends Api
 {
-    public function getCollection(){
+    public function getCollection()
+    {
         $response = $this->get('importtasks', []);
 
         if (!$response->success) {
