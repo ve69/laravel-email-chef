@@ -30,7 +30,7 @@ class ImportTasksApi extends Api
     }
 
     public function getInstance(
-        int $task_id
+        string $task_id
     ){
         $response = $this->get('importtasks/'.$task_id, [
             'task_id' => $task_id
@@ -46,7 +46,7 @@ class ImportTasksApi extends Api
     }
 
     public function create(
-        int $list_id,
+        string $list_id,
         array $instance_in = []
     ) {
         $validator = Validator::make($instance_in, [

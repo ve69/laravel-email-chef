@@ -18,13 +18,14 @@ class PredefinedFieldsTest extends TestCase
 
         $predefined_field = $response->first();
 
+        $this->assertInstanceOf(Collection::class, $response);
         $this->assertInstanceOf(PredefinedFieldsEntity::class, $predefined_field);
-        //id is integer not int $this->assertIsInt('predefined_field_id', $predefined_field->id);
+        $this->assertIsString('predefined_field_id', $predefined_field->id);
         $this->assertIsString('predefined_field', $predefined_field->name);
-        //type_id is integer not int $this->assertIsInt('predefined_field_id', $predefined_field->type_id);
+        $this->assertIsString('predefined_field_id', $predefined_field->type_id);
         $this->assertIsString('predefined_fields', $predefined_field->place_holder);
         $this->assertIsString('predefined_fields', $predefined_field->reference);
-        //mandatory is integer not int $this->assertIsInt('predefined_field_id', $predefined_field->mandatory);
+        $this->assertIsString('predefined_field_id', $predefined_field->mandatory);
         $this->assertIsString('predefined_fields', $predefined_field->data_type);
     }
 }

@@ -13,7 +13,7 @@ class GetInstance extends AbstractEntity
     public string $imported;
     public string $failed;
     public string $updated;
-    public string $upload_file_name;
+    public string $uploaded_file_name;
     public ?string $notification_link;
     public string $list_name;
 }

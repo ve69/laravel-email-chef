@@ -6,5 +6,5 @@ use OfflineAgency\LaravelEmailChef\Entities\AbstractEntity;
 
 class CountBlockings extends AbstractEntity
 {
-    public int $totalcount;
+    public string $totalcount;
 }
