@@ -19,4 +19,3 @@ class SubscriptionApi extends Api
         return new SubscriptionEntity($response->data);
     }
 }
-

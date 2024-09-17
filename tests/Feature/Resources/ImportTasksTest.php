@@ -77,7 +77,7 @@ class ImportTasksTest extends TestCase
                             'placeholder' => 'last_name',
                             'value' => 'Zancan',
                         ],
-                    ]
+                    ],
 
                 ],
                 'notification_link' => 'http://usersremotesite.net/notifications/endpoint',

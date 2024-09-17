@@ -39,7 +39,7 @@ class BlockingsApi extends Api
         string $query_string,
     ) {
         $response = $this->get('blockings/count?query_string='.$query_string, [
-            'query_string' => $query_string
+            'query_string' => $query_string,
         ]);
 
         if (! $response->success) {
