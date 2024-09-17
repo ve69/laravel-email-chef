@@ -10,9 +10,13 @@ class BulkMessageStatus extends AbstractEntity
     public string $message_id;
 
     public string $to;
+
     public string $from;
+
     public string $text;
+
     public string $sent_at;
+
     public string $done_at;
 
     public int $sms_count;

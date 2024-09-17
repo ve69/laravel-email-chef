@@ -20,6 +20,8 @@ class SMSApi extends Api
 
         $response = $this->post('sms/send', $body);
 
+//        dd($response);
+
         if (! $response->success) {
             return new Error($response->data);
         }
@@ -32,6 +34,8 @@ class SMSApi extends Api
     public function getBalance()
     {
         $response = $this->get('sms/balance');
+
+//        dd($response);
 
         if (! $response->success) {
             return new Error($response->data);
@@ -48,6 +52,8 @@ class SMSApi extends Api
 
         $response = $this->get('sms/status/' . $messageId);
 
+//        dd($response);
+
         if (! $response->success) {
             return new Error($response->data);
         }
@@ -62,6 +68,8 @@ class SMSApi extends Api
     ) {
 
         $response = $this->get('sms/bulk/status/' . $bulkId);
+
+//        dd($response);
 
         if (! $response->success) {
             return new Error($response->data);

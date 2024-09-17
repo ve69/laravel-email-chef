@@ -11,7 +11,7 @@ class SendEmailApi extends Api
     public function sendMail(
         array $body
     ) {
-        $response = $this->post('sendmail ', $body);
+        $response = $this->post('sendmail', $body);
 
         if (! $response->success) {
             return new Error($response->data);

@@ -15,7 +15,7 @@ class Campaign extends AbstractEntity
 
     public string $type;
 
-    public string $subject;
+    public $subject;
 
     public string $html_body;
 
