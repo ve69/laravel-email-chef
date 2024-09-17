@@ -8,7 +8,6 @@ use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class SendMailTest extends TestCase
 {
-
     public function test_send_mail()
     {
         $sendMail = new SendEmailApi();

@@ -161,7 +161,7 @@ class AutorespondersApi extends Api
 
         $response = $this->put('newsletters/'.$id, $body);
 
-        if ( !$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

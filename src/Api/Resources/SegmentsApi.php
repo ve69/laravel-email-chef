@@ -20,8 +20,7 @@ class SegmentsApi extends Api
         ?int $limit,
         ?int $offset
     ) {
-
-        $response = $this->get( 'lists/'.$list_id.'/segments?limit='.$limit.'&offset='.$offset, [
+        $response = $this->get('lists/'.$list_id.'/segments?limit='.$limit.'&offset='.$offset, [
             'list_id' => $list_id,
             'limit' => $limit,
             'offset' => $offset,
@@ -116,7 +115,7 @@ class SegmentsApi extends Api
 
         $response = $this->post('segments?list_id='.$list_id, $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -163,8 +162,7 @@ class SegmentsApi extends Api
 
     public function deleteInstance(
         string $segment_id
-    )
-    {
+    ) {
         $response = $this->destroy('segments/'.$segment_id, [
             'segment_id' => $segment_id,
         ]);

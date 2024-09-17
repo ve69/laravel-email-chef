@@ -2,7 +2,6 @@
 
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
-
 use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Campaign;
@@ -50,7 +49,7 @@ class CampaignsApi extends Api
             'ordertype' => $ordertype,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

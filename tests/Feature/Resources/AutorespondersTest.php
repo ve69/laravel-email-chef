@@ -142,7 +142,7 @@ class AutorespondersTest extends TestCase
                         'link_id' => null,
                     ],
                     'default_order_segments' => 'ANY',
-                ]
+                ],
             ]
         );
 
@@ -173,7 +173,7 @@ class AutorespondersTest extends TestCase
                     'id' => '403128',
                     'command' => 'send_test',
                     'email' => 'email',
-                ]
+                ],
             ]
         );
 
@@ -215,7 +215,6 @@ class AutorespondersTest extends TestCase
 
         $this->assertInstanceOf(AutoresponderActivation::class, $response);
     }
-
 
     public function test_cloning()
     {

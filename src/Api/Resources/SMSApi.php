@@ -41,7 +41,6 @@ class SMSApi extends Api
     public function getStatusMessage(
         string $messageId
     ) {
-
         $response = $this->get('sms/status/'.$messageId);
 
         if (! $response->success) {
@@ -56,7 +55,6 @@ class SMSApi extends Api
     public function getBulkMessageStatus(
         string $bulkId
     ) {
-
         $response = $this->get('sms/bulk/status/'.$bulkId);
 
         if (! $response->success) {

@@ -33,7 +33,7 @@ class SegmentsTest extends TestCase
         $segment = new SegmentsApi;
 
         $response = $segment->getInstance(
-             '73986'
+            '73986'
         );
 
         $this->assertInstanceOf(Segment::class, $response);
@@ -138,7 +138,6 @@ class SegmentsTest extends TestCase
 
         $this->assertInstanceOf(UpdateSegment::class, $response);
     }
-
 
     public function test_delete_instance()
     {
