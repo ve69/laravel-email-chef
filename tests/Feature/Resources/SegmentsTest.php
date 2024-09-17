@@ -88,7 +88,7 @@ class SegmentsTest extends TestCase
                                 'comparator_id' => '1',
                                 'field_id' => '-1',
                                 'name' => 'email',
-                                'value' => 'nomecognome@gmail.com'
+                                'value' => 'cognomenome@gmail.com'
                             ]
                         ]
                     ]
@@ -124,7 +124,7 @@ class SegmentsTest extends TestCase
                                     'comparator_id' => '1',
                                     'field_id' => '-1',
                                     'name' => 'email',
-                                    'value' => 'nomecognome@gmail.com'
+                                    'value' => 'cognomenome@gmail.com'
                                 ]
                             ]
                         ]
@@ -145,7 +145,7 @@ class SegmentsTest extends TestCase
         $segment = new SegmentsApi;
 
         $response = $segment->deleteInstance(
-            '74100'
+            '74106'
         );
 
         $this->assertInstanceOf(SegmentDeletion::class, $response);
