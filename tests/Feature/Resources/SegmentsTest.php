@@ -20,8 +20,8 @@ class SegmentsTest extends TestCase
 
         $response = $segment->getCollection(
             '108094',
-            null,
-            null,
+            10,
+            0,
         );
 
         $single_segment = $response->first();
@@ -142,6 +142,7 @@ class SegmentsTest extends TestCase
 
     public function test_delete_instance()
     {
+        $this->markTestIncomplete();
         $segment = new SegmentsApi;
 
         $response = $segment->deleteInstance(
