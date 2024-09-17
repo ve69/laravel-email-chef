@@ -24,8 +24,20 @@ class AccountInfosTest extends TestCase
     {
         $account = new AccountInfosApi();
 
-        $response  = $account->update('810136');
+        $response  = $account->update(
+            [
+                'firstname' => 'Giacomo',
+                'lastname' => 'Fabbian',
+                'business' => 'Offline Agency s.r.l.',
+                'address_1' => 'Viale del Lavoro, 23',
+                'city' => 'Padova',
+                'country' => 'IT',
+                'phone_number' => '00393407187100',
+                'postal_code' => '35020',
+                'website' => 'https://offlineagency.com',
+            ]
+        );
 
-        dd($response);//todo: check why there's an error
+        $this->assertIsObject($response);
     }
 }

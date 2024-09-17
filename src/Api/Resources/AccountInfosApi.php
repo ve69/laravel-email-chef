@@ -2,6 +2,7 @@
 
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
+use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\AccountInfos\GetInstance;
 use OfflineAgency\LaravelEmailChef\Entities\AccountInfos\UpdatedAccountInfosEntity;
@@ -23,16 +24,33 @@ class AccountInfosApi extends Api
     }
 
     public function update(
-        string $accountId
+        array $instance_in = []
     )
     {
-        $response = $this->put('account_infos/'.$accountId, []);
+        $validator = Validator::make($instance_in, [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'business' => 'required|string',
+            'address_1' => 'required|string',
+            'city' => 'required|string',
+            'country' => 'required|string',
+            'phone_number' => 'required|string',
+            'postal_code' => 'required|string',
+            'website' => 'required|string',
+        ]);
 
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
+        $response = $this->put('account_infos', [
+            'instance_in' => $instance_in,
+        ]);
 
         if (! $response->success) {
             return new Error($response->data);
         }
 
-        return new UpdatedAccountInfosEntity($response->data);
+        return $response->data;
     }
 }
