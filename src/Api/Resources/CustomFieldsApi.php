@@ -3,13 +3,12 @@
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
 use Illuminate\Support\Facades\Validator;
-use OfflineAgency\LaravelEmailChef\Entities\CustomFields\UpdatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CountCustomFieldsEntity;
-use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CreatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\GetCollection;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\GetInstance;
+use OfflineAgency\LaravelEmailChef\Entities\CustomFields\UpdatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
 
 class CustomFieldsApi extends Api
@@ -21,12 +20,12 @@ class CustomFieldsApi extends Api
             'list_id' => $list_id,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
         $collection = $response->data;
-            // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
+        // dd(gettype($collection)); //ERROR: $collection è un array, dovrebbe essere un object <-- controllare tutte le chiamate in get
         $out = collect();
         foreach ($collection as $collectionItem) {
             $out->push(new GetCollection($collectionItem));
@@ -42,7 +41,7 @@ class CustomFieldsApi extends Api
             'field_id' => $field_id,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -58,7 +57,7 @@ class CustomFieldsApi extends Api
             'list_id' => $list_id,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -75,7 +74,7 @@ class CustomFieldsApi extends Api
             'data_type' => 'string',
             'name' => 'string',
             'place_holder' => 'string',
-            'default_value' => 'integer'
+            'default_value' => 'integer',
         ]);
 
         if ($validator->fails()) {
@@ -86,7 +85,7 @@ class CustomFieldsApi extends Api
             'instance_in' => $instance_in,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -107,7 +106,7 @@ class CustomFieldsApi extends Api
             'options' => 'array',
             'default_value' => 'string',
             'admin_only' => 'string',
-            'ord' =>  'array',
+            'ord' => 'array',
             'data_type' => 'string',
         ]);
 
@@ -119,7 +118,7 @@ class CustomFieldsApi extends Api
             'instance_in' => $instance_in,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -130,11 +129,10 @@ class CustomFieldsApi extends Api
 
     public function delete(
         string $field_id
-    )
-    {
+    ) {
         $response = $this->destroy('customfields/'.$field_id);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

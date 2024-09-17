@@ -18,10 +18,10 @@ class BlockingsApi extends Api
         $response = $this->get('blockings?$query_string='.$query_string.'&limit='.$limit.'&offset='.$offset, [
             'query_string' => $query_string,
             'limit' => $limit,
-            'offset' => $offset
+            'offset' => $offset,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -36,13 +36,13 @@ class BlockingsApi extends Api
     }
 
     public function count(
-        string $query_string
+        string $query_string,
     ) {
         $response = $this->get('blockings/count?query_string='.$query_string, [
             'query_string' => $query_string
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -57,7 +57,7 @@ class BlockingsApi extends Api
     ) {
         $response = $this->post('blockings?email='.$email.'&type='.$type, []);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -71,7 +71,7 @@ class BlockingsApi extends Api
     ) {
         $response = $this->destroy('blockings/'.$email);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

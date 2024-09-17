@@ -13,5 +13,4 @@ class PredefinedFieldsEntity extends AbstractEntity
     public string $reference;
     public string $mandatory;
     public string $data_type;
-
 }

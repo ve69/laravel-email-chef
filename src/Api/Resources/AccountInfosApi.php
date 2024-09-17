@@ -5,15 +5,13 @@ namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\AccountInfos\GetInstance;
-use OfflineAgency\LaravelEmailChef\Entities\AccountInfos\UpdatedAccountInfosEntity;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
 
 class AccountInfosApi extends Api
 {
     public function getInstance(
         string $accountId
-    )
-    {
+    ) {
         $response = $this->get('account_infos/'.$accountId);
 
         if (! $response->success) {
@@ -25,8 +23,7 @@ class AccountInfosApi extends Api
 
     public function update(
         array $instance_in = []
-    )
-    {
+    ) {
         $validator = Validator::make($instance_in, [
             'firstname' => 'required|string',
             'lastname' => 'required|string',

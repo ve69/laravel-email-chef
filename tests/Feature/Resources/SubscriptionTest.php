@@ -2,9 +2,6 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
-use OfflineAgency\LaravelEmailChef\Api\Resources\ContactsApi;
 use OfflineAgency\LaravelEmailChef\Api\Resources\SubscriptionApi;
 use OfflineAgency\LaravelEmailChef\Entities\Subscription\SubscriptionEntity;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;

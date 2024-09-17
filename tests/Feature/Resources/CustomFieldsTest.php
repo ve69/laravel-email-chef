@@ -4,12 +4,11 @@ namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
 use Illuminate\Support\Collection;
 use OfflineAgency\LaravelEmailChef\Api\Resources\CustomFieldsApi;
-use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CreatedCustomFieldsEntity;
-use OfflineAgency\LaravelEmailChef\Entities\CustomFields\UpdatedCustomFieldsEntity;
-use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CountCustomFieldsEntity;
+use OfflineAgency\LaravelEmailChef\Entities\CustomFields\CreatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\GetCollection;
 use OfflineAgency\LaravelEmailChef\Entities\CustomFields\GetInstance;
+use OfflineAgency\LaravelEmailChef\Entities\CustomFields\UpdatedCustomFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class CustomFieldsTest extends TestCase
@@ -79,7 +78,7 @@ class CustomFieldsTest extends TestCase
                 'data_type' => 'string',
                 'name' => 'Smartphone4',
                 'place_holder' => 'smartphone4',
-                'default_value' => 1
+                'default_value' => '1',
             ]
         );
 
@@ -120,7 +119,7 @@ class CustomFieldsTest extends TestCase
                 'data_type' => 'boolean',
                 'name' => 'Smartphone1',
                 'place_holder' => 'smartphone1',
-                'default_value' => '1'
+                'default_value' => '1',
             ]
         );
 

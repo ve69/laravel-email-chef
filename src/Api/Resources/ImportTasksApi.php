@@ -11,11 +11,11 @@ use OfflineAgency\LaravelEmailChef\Entities\ImportTasks\GetInstance;
 
 class ImportTasksApi extends Api
 {
-    public function getCollection()
-    {
+    public function getCollection(
+    ) {
         $response = $this->get('importtasks', []);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -31,12 +31,12 @@ class ImportTasksApi extends Api
 
     public function getInstance(
         string $task_id
-    ){
+    ) {
         $response = $this->get('importtasks/'.$task_id, [
-            'task_id' => $task_id
+            'task_id' => $task_id,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -62,7 +62,7 @@ class ImportTasksApi extends Api
             'instance_in' => $instance_in,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

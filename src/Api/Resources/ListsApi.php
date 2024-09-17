@@ -27,7 +27,7 @@ class ListsApi extends Api
             'order_type' => $order_type,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

@@ -8,10 +8,11 @@ use OfflineAgency\LaravelEmailChef\Entities\PredefinedFields\PredefinedFieldsEnt
 
 class PredefinedFieldsApi extends Api
 {
-    public function getCollection(){
+    public function getCollection(
+    ) {
         $response = $this->get('/predefinedfields');
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

@@ -3,7 +3,6 @@
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use OfflineAgency\LaravelEmailChef\Api\Resources\PredefinedFieldsApi;
 use OfflineAgency\LaravelEmailChef\Entities\PredefinedFields\PredefinedFieldsEntity;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;

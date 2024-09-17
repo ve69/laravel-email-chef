@@ -1,6 +1,5 @@
 <?php
 
-
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
 use OfflineAgency\LaravelEmailChef\Api\Resources\AccountApi;

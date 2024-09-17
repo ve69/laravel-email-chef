@@ -4,12 +4,10 @@ namespace OfflineAgency\LaravelChef\Tests\Feature\Resources;
 
 use Illuminate\Support\Collection;
 use OfflineAgency\LaravelEmailChef\Api\Resources\BlockingsApi;
-use OfflineAgency\LaravelEmailChef\Entities\Blockings\BlockingsEntity;
-use OfflineAgency\LaravelEmailChef\Entities\Blockings\CreatedBlockingsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\Blockings\CountBlockingsEntity;
+use OfflineAgency\LaravelEmailChef\Entities\Blockings\CreatedBlockingsEntity;
 use OfflineAgency\LaravelEmailChef\Entities\Blockings\GetCollection;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;
-use voku\helper\ASCII;
 
 class BlockingsTest extends TestCase
 {

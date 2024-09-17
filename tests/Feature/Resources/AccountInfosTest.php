@@ -2,11 +2,8 @@
 
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use OfflineAgency\LaravelEmailChef\Api\Resources\AccountInfosApi;
 use OfflineAgency\LaravelEmailChef\Entities\AccountInfos\GetInstance;
-use OfflineAgency\LaravelEmailChef\Entities\AccountInfos\UpdatedAccountInfosEntity;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class AccountInfosTest extends TestCase
@@ -24,7 +21,7 @@ class AccountInfosTest extends TestCase
     {
         $account = new AccountInfosApi();
 
-        $response  = $account->update(
+        $response = $account->update(
             [
                 'firstname' => 'Giacomo',
                 'lastname' => 'Fabbian',

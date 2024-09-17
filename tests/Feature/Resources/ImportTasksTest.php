@@ -3,7 +3,6 @@
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
 use OfflineAgency\LaravelEmailChef\Api\Resources\ImportTasksApi;
-use OfflineAgency\LaravelEmailChef\Entities\ImportTasks\ImportTasksEntity;
 use OfflineAgency\LaravelEmailChef\Entities\ImportTasks\CreatedImportTasksEntity;
 use OfflineAgency\LaravelEmailChef\Entities\ImportTasks\GetCollection;
 use OfflineAgency\LaravelEmailChef\Entities\ImportTasks\GetInstance;
@@ -64,24 +63,24 @@ class ImportTasksTest extends TestCase
                     [
                         [
                             'placeholder' => 'email',
-                            'value' => 'fzancan@gmail.com'
-                        ]
+                            'value' => 'fzancan@gmail.com',
+                        ],
                     ],
                     [
                         [
                             'placeholder' => 'first_name',
-                            'value' => 'Federico'
-                        ]
+                            'value' => 'Federico',
+                        ],
                     ],
                     [
                         [
                             'placeholder' => 'last_name',
-                            'value' => 'Zancan'
-                        ]
+                            'value' => 'Zancan',
+                        ],
                     ]
 
                 ],
-                'notification_link' => 'http://usersremotesite.net/notifications/endpoint'
+                'notification_link' => 'http://usersremotesite.net/notifications/endpoint',
             ]
         );
 
