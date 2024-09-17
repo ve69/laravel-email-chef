@@ -124,7 +124,9 @@ class CustomFieldsTest extends TestCase
             ]
         );
 
-        $response = $custom_fields->delete($response->custom_field_id);
+        $custom_fields_id = $response->custom_field_id;
+
+        $response = $custom_fields->delete($custom_fields_id);
 
         $this->assertIsString($response);
     }
