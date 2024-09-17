@@ -49,7 +49,7 @@ class AutorespondersTest extends TestCase
         $autoresponder = new AutorespondersApi;
 
         $response = $autoresponder->getInstance(
-            '403070'
+            '404282'
         );
 
         $this->assertInstanceOf(Autoresponder::class, $response);
@@ -173,7 +173,7 @@ class AutorespondersTest extends TestCase
                 'instance_in' => [
                     'id' => '403128',
                     'command' => 'send_test',
-                    'email' => 'alessio.petre98@gmail.com'
+                    'email' => 'email'
                 ]
             ]
         );
@@ -186,7 +186,7 @@ class AutorespondersTest extends TestCase
         $autoresponder = new AutorespondersApi;
 
         $response = $autoresponder->activate(
-            '403128',
+            '404282',
             [
                 'instance_in' => [
                     'autoresponder' => [
@@ -204,7 +204,7 @@ class AutorespondersTest extends TestCase
         $autoresponder = new AutorespondersApi;
 
         $response = $autoresponder->deactivate(
-            '403128',
+            '404282',
             [
                 'instance_in' => [
                     'autoresponder' => [
@@ -225,7 +225,7 @@ class AutorespondersTest extends TestCase
         $response = $autoresponder->cloning(
             [
                 'instance_in' => [
-                    'id' => '403128'
+                    'id' => '404282'
                 ]
             ]
         );
@@ -238,7 +238,7 @@ class AutorespondersTest extends TestCase
         $autoresponder = new AutorespondersApi;
 
         $response = $autoresponder->getLinksCollection(
-            '403128'
+            '404282'
         );
 
         $this->assertInstanceOf(AutoresponderLinks::class, $response);

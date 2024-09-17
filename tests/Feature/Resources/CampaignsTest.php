@@ -55,7 +55,7 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->getInstance(
-            '402978'
+            '404596'
         );
 
         $this->assertInstanceOf(Campaign::class, $response);
@@ -148,7 +148,7 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->deleteInstance(
-            '404362'
+            '404594'
         );
 
         $this->assertInstanceOf(CampaignDeletion::class, $response);
@@ -159,10 +159,10 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->sendTestEmail(
-            404248,
+            '404596',
             [
                 'instance_in' => [
-                    'id' => '404248',
+                    'id' => '404596',
                     'command' => 'send_test',
                     'email' => 'email'
                 ]
@@ -177,10 +177,10 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->sendCampaign(
-            '404254',
+            '404596',
             [
                 'instance_in' => [
-                    'id' => '404254',
+                    'id' => '404596',
                     'command' => 'send_all'
                 ]
             ]
@@ -194,10 +194,10 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->schedule(
-            403086,
+            '404596',
             [
                 'instance_in' => [
-                    'id' => '403086',
+                    'id' => '404596',
                     'command' => 'schedule',
                 ]
             ]
@@ -211,7 +211,7 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->cancelScheduling(
-            403086
+            '404596'
         );
 
         $this->assertInstanceOf(CancelScheduling::class, $response);
@@ -222,7 +222,7 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->archive(
-            403086
+            '404596'
         );
 
         $this->assertInstanceOf(CampaignArchiving::class, $response);
@@ -233,7 +233,7 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->unarchive(
-            '403086'
+            '404596'
         );
 
         $this->assertInstanceOf(CampaignArchiving::class, $response);
@@ -246,7 +246,7 @@ class CampaignsTest extends TestCase
         $response = $campaign->cloning(
             [
                 'instance_in' => [
-                    'id' => '403086'
+                    'id' => '404592'
                 ]
             ]
         );
@@ -259,7 +259,7 @@ class CampaignsTest extends TestCase
         $campaign = new CampaignsApi;
 
         $response = $campaign->getLinkCollection(
-            403086
+            '404596'
         );
 
         $this->assertInstanceOf(LinkCollection::class, $response);

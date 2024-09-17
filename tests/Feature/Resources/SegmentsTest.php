@@ -110,7 +110,7 @@ class SegmentsTest extends TestCase
 
         $response = $segment->updateInstance(
             '108094',
-            '74028',
+            '74006',
             [
                 'instance_in' => [
                     'list_id' => '108094',
@@ -145,7 +145,7 @@ class SegmentsTest extends TestCase
         $segment = new SegmentsApi;
 
         $response = $segment->deleteInstance(
-            '74034'
+            '74100'
         );
 
         $this->assertInstanceOf(SegmentDeletion::class, $response);
