@@ -2,21 +2,22 @@
 
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
-use OfflineAgency\LaravelEmailChef\Api\Api;
+
 use Illuminate\Support\Facades\Validator;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCount;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCollection;
+use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Campaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CreateCampaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\UpdateCampaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignDeletion;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendTestEmail;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendCampaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Schedule;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CancelScheduling;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignArchiving;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCollection;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCount;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignDeletion;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CancelScheduling;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Cloning;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CreateCampaign;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\LinkCollection;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Schedule;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendCampaign;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendTestEmail;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\UpdateCampaign;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
 
 class CampaignsApi extends Api
@@ -25,7 +26,7 @@ class CampaignsApi extends Api
     {
         $response = $this->get('campaigns/count');
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -40,8 +41,7 @@ class CampaignsApi extends Api
         ?int $offset,
         string $orderby,
         string $ordertype
-    )
-    {
+    ) {
         $response = $this->get('campaigns', [
             'status' => $status,
             'limit' => $limit,
@@ -65,11 +65,10 @@ class CampaignsApi extends Api
 
     public function getInstance(
         string $id
-    )
-    {
-        $response = $this->get('campaigns/' . $id);
+    ) {
+        $response = $this->get('campaigns/'.$id);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -80,8 +79,7 @@ class CampaignsApi extends Api
 
     public function createInstance(
         array $body
-    )
-    {
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'nullable',
             'instance_in.name' => 'required',
@@ -115,9 +113,7 @@ class CampaignsApi extends Api
 
         $response = $this->post('newsletters', $body);
 
-        //dd($response);
-
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -128,9 +124,8 @@ class CampaignsApi extends Api
 
     public function updateInstance(
         string $id,
-        array  $body
-    )
-    {
+        array $body
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'nullable',
             'instance_in.name' => 'required',
@@ -162,9 +157,9 @@ class CampaignsApi extends Api
             return $validator->errors();
         }
 
-        $response = $this->put('newsletters/' . $id, $body);
+        $response = $this->put('newsletters/'.$id, $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -175,11 +170,10 @@ class CampaignsApi extends Api
 
     public function deleteInstance(
         string $id
-    )
-    {
-        $response = $this->destroy('campaigns/' . $id);
+    ) {
+        $response = $this->destroy('campaigns/'.$id);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -190,9 +184,8 @@ class CampaignsApi extends Api
 
     public function sendTestEmail(
         string $id,
-        array  $body
-    )
-    {
+        array $body
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'required',
             'instance_in.command' => 'required',
@@ -203,9 +196,9 @@ class CampaignsApi extends Api
             return $validator->errors();
         }
 
-        $response = $this->post('campaigns/' . $id . '/launcher', $body);
+        $response = $this->post('campaigns/'.$id.'/launcher', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -217,11 +210,10 @@ class CampaignsApi extends Api
     public function sendCampaign(
         string $id,
         array $body
-    )
-    {
-        $response = $this->post('campaigns/' . $id . '/launcher', $body);
+    ) {
+        $response = $this->post('campaigns/'.$id.'/launcher', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -232,12 +224,11 @@ class CampaignsApi extends Api
 
     public function schedule(
         string $id,
-        array  $body
-    )
-    {
-        $response = $this->post('campaigns/' . $id . '/launcher', $body);
+        array $body
+    ) {
+        $response = $this->post('campaigns/'.$id.'/launcher', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -248,11 +239,10 @@ class CampaignsApi extends Api
 
     public function cancelScheduling(
         string $id
-    )
-    {
-        $response = $this->put('campaigns/' . $id . '/cancelscheduling', []);
+    ) {
+        $response = $this->put('campaigns/'.$id.'/cancelscheduling', []);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -263,11 +253,10 @@ class CampaignsApi extends Api
 
     public function archive(
         string $id
-    )
-    {
-        $response = $this->put('campaigns/' . $id . '/archivecampaign', []);
+    ) {
+        $response = $this->put('campaigns/'.$id.'/archivecampaign', []);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -278,11 +267,10 @@ class CampaignsApi extends Api
 
     public function unarchive(
         string $campaign_id
-    )
-    {
-        $response = $this->put('campaigns/' . $campaign_id . '/unarchivecampaign', []);
+    ) {
+        $response = $this->put('campaigns/'.$campaign_id.'/unarchivecampaign', []);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -293,8 +281,7 @@ class CampaignsApi extends Api
 
     public function cloning(
         array $body
-    )
-    {
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'required',
         ]);
@@ -305,7 +292,7 @@ class CampaignsApi extends Api
 
         $response = $this->post('newsletters?clone=1', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -316,11 +303,10 @@ class CampaignsApi extends Api
 
     public function getLinkCollection(
         string $id
-    )
-    {
-        $response = $this->get('newsletters/' . $id . '/links');
+    ) {
+        $response = $this->get('newsletters/'.$id.'/links');
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

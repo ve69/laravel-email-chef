@@ -2,18 +2,18 @@
 
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
-use OfflineAgency\LaravelEmailChef\Api\Api;
 use Illuminate\Support\Facades\Validator;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderCount;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderCollection;
+use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\Autoresponder;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\CreateAutoresponder;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\UpdateAutoresponder;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderDeletion;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\SendTestEmail;
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderActivation;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\Cloning;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderCollection;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderCount;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderDeletion;
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderLinks;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\Cloning;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\CreateAutoresponder;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\SendTestEmail;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\UpdateAutoresponder;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
 
 class AutorespondersApi extends Api
@@ -22,7 +22,7 @@ class AutorespondersApi extends Api
     {
         $response = $this->get('autoresponders/count');
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -32,12 +32,11 @@ class AutorespondersApi extends Api
     }
 
     public function getCollection(
-        ?int   $limit,
-        ?int   $offset,
+        ?int $limit,
+        ?int $offset,
         string $orderby,
         string $ordertype
-    )
-    {
+    ) {
         $response = $this->get('autoresponders', [
             'limit' => $limit,
             'offset' => $offset,
@@ -45,7 +44,7 @@ class AutorespondersApi extends Api
             'ordertype' => $ordertype,
         ]);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -60,11 +59,10 @@ class AutorespondersApi extends Api
 
     public function getInstance(
         string $id
-    )
-    {
-        $response = $this->get('autoresponders/' . $id);
+    ) {
+        $response = $this->get('autoresponders/'.$id);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -75,8 +73,7 @@ class AutorespondersApi extends Api
 
     public function createInstance(
         array $body
-    )
-    {
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'nullable',
             'instance_in.name' => 'required',
@@ -114,7 +111,7 @@ class AutorespondersApi extends Api
 
         $response = $this->post('newsletters', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -125,9 +122,8 @@ class AutorespondersApi extends Api
 
     public function updateInstance(
         string $id,
-        array  $body
-    )
-    {
+        array $body
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'nullable',
             'instance_in.name' => 'required',
@@ -163,9 +159,9 @@ class AutorespondersApi extends Api
             return $validator->errors();
         }
 
-        $response = $this->put('newsletters/' . $id, $body);
+        $response = $this->put('newsletters/'.$id, $body);
 
-        if (!$response->success) {
+        if ( !$response->success) {
             return new Error($response->data);
         }
 
@@ -176,11 +172,10 @@ class AutorespondersApi extends Api
 
     public function deleteInstance(
         string $id
-    )
-    {
-        $response = $this->destroy('newsletters/' . $id);
+    ) {
+        $response = $this->destroy('newsletters/'.$id);
         //dd($response);
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -191,9 +186,8 @@ class AutorespondersApi extends Api
 
     public function sendTestEmail(
         string $id,
-        array  $body
-    )
-    {
+        array $body
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'required',
             'instance_in.command' => 'required',
@@ -204,9 +198,9 @@ class AutorespondersApi extends Api
             return $validator->errors();
         }
 
-        $response = $this->post('autoresponders/' . $id . '/launcher', $body);
+        $response = $this->post('autoresponders/'.$id.'/launcher', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -218,11 +212,10 @@ class AutorespondersApi extends Api
     public function activate(
         string $id,
         array $body
-    )
-    {
-        $response = $this->put('newsletters/' . $id . '?activate=1', $body);
+    ) {
+        $response = $this->put('newsletters/'.$id.'?activate=1', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -234,11 +227,10 @@ class AutorespondersApi extends Api
     public function deactivate(
         string $id,
         array $body
-    )
-    {
-        $response = $this->put('newsletters/' . $id . '?activate=-1', $body);
+    ) {
+        $response = $this->put('newsletters/'.$id.'?activate=-1', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -249,8 +241,7 @@ class AutorespondersApi extends Api
 
     public function cloning(
         array $body
-    )
-    {
+    ) {
         $validator = Validator::make($body, [
             'instance_in.id' => 'required',
         ]);
@@ -261,7 +252,7 @@ class AutorespondersApi extends Api
 
         $response = $this->post('newsletters?clone=1', $body);
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 
@@ -272,11 +263,10 @@ class AutorespondersApi extends Api
 
     public function getLinksCollection(
         string $id
-    )
-    {
-        $response = $this->get('newsletters/' . $id . '/links');
+    ) {
+        $response = $this->get('newsletters/'.$id.'/links');
 
-        if (!$response->success) {
+        if (! $response->success) {
             return new Error($response->data);
         }
 

@@ -2,25 +2,19 @@
 
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
-use OfflineAgency\LaravelEmailChef\Entities\SMS\Send;
 use OfflineAgency\LaravelEmailChef\Entities\SMS\Balance;
-use OfflineAgency\LaravelEmailChef\Entities\SMS\StatusMessage;
 use OfflineAgency\LaravelEmailChef\Entities\SMS\BulkMessageStatus;
-
+use OfflineAgency\LaravelEmailChef\Entities\SMS\Send;
+use OfflineAgency\LaravelEmailChef\Entities\SMS\StatusMessage;
 
 class SMSApi extends Api
 {
     public function send(
         array $body
     ) {
-
         $response = $this->post('sms/send', $body);
-
-//        dd($response);
 
         if (! $response->success) {
             return new Error($response->data);
@@ -35,8 +29,6 @@ class SMSApi extends Api
     {
         $response = $this->get('sms/balance');
 
-//        dd($response);
-
         if (! $response->success) {
             return new Error($response->data);
         }
@@ -50,9 +42,7 @@ class SMSApi extends Api
         string $messageId
     ) {
 
-        $response = $this->get('sms/status/' . $messageId);
-
-//        dd($response);
+        $response = $this->get('sms/status/'.$messageId);
 
         if (! $response->success) {
             return new Error($response->data);
@@ -67,9 +57,7 @@ class SMSApi extends Api
         string $bulkId
     ) {
 
-        $response = $this->get('sms/bulk/status/' . $bulkId);
-
-//        dd($response);
+        $response = $this->get('sms/bulk/status/'.$bulkId);
 
         if (! $response->success) {
             return new Error($response->data);

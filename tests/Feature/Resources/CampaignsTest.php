@@ -3,19 +3,19 @@
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
 use OfflineAgency\LaravelEmailChef\Api\Resources\CampaignsApi;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCount;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCollection;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Campaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CreateCampaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\UpdateCampaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignDeletion;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendTestEmail;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendCampaign;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Schedule;
-use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CancelScheduling;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignArchiving;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCollection;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignCount;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CampaignDeletion;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CancelScheduling;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Cloning;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\CreateCampaign;
 use OfflineAgency\LaravelEmailChef\Entities\Campaigns\LinkCollection;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\Schedule;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendCampaign;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\SendTestEmail;
+use OfflineAgency\LaravelEmailChef\Entities\Campaigns\UpdateCampaign;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class CampaignsTest extends TestCase
@@ -92,15 +92,14 @@ class CampaignsTest extends TestCase
                     'id' => null,
                     'recipients_count_cache' => '0',
                     'status' => 'DRAFT',
-                    'scheduled_time' => null
+                    'scheduled_time' => null,
                 ],
-                'default_order_segments' => 'ANY'
-            ]
+                'default_order_segments' => 'ANY',
+            ],
         ]);
 
         $this->assertInstanceOf(CreateCampaign::class, $response);
     }
-
 
     public function test_update_instance()
     {
@@ -133,10 +132,10 @@ class CampaignsTest extends TestCase
                         'id' => null,
                         'recipients_count_cache' => '0',
                         'status' => 'DRAFT',
-                        'scheduled_time' => null
+                        'scheduled_time' => null,
                     ],
-                    'default_order_segments' => 'ANY'
-                ]
+                    'default_order_segments' => 'ANY',
+                ],
             ]
         );
 
@@ -164,8 +163,8 @@ class CampaignsTest extends TestCase
                 'instance_in' => [
                     'id' => '404596',
                     'command' => 'send_test',
-                    'email' => 'email'
-                ]
+                    'email' => 'email',
+                ],
             ]
         );
 
@@ -181,8 +180,8 @@ class CampaignsTest extends TestCase
             [
                 'instance_in' => [
                     'id' => '404596',
-                    'command' => 'send_all'
-                ]
+                    'command' => 'send_all',
+                ],
             ]
         );
 
@@ -199,7 +198,7 @@ class CampaignsTest extends TestCase
                 'instance_in' => [
                     'id' => '404596',
                     'command' => 'schedule',
-                ]
+                ],
             ]
         );
 
@@ -246,8 +245,8 @@ class CampaignsTest extends TestCase
         $response = $campaign->cloning(
             [
                 'instance_in' => [
-                    'id' => '404592'
-                ]
+                    'id' => '404592',
+                ],
             ]
         );
 

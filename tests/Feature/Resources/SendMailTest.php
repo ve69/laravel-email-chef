@@ -24,7 +24,7 @@ class SendMailTest extends TestCase
                     'subject' => 'Subject here',
                     'text_body' => 'Plain text body here',
                     'html_body' => 'Full HTML body here',
-                    'reply_to' => ''
+                    'reply_to' => '',
                 ],
             ]
         );

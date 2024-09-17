@@ -3,8 +3,8 @@
 namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
 use OfflineAgency\LaravelEmailChef\Api\Api;
-use OfflineAgency\LaravelEmailChef\Entities\SendEmail\SendMail;
 use OfflineAgency\LaravelEmailChef\Entities\Error;
+use OfflineAgency\LaravelEmailChef\Entities\SendEmail\SendMail;
 
 class SendEmailApi extends Api
 {

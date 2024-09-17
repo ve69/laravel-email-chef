@@ -33,7 +33,7 @@ class SegmentsTest extends TestCase
         $segment = new SegmentsApi;
 
         $response = $segment->getInstance(
-           '73986'
+             '73986'
         );
 
         $this->assertInstanceOf(Segment::class, $response);
@@ -88,15 +88,15 @@ class SegmentsTest extends TestCase
                                 'comparator_id' => '1',
                                 'field_id' => '-1',
                                 'name' => 'email',
-                                'value' => 'cognomenome@gmail.com'
-                            ]
-                        ]
-                    ]
+                                'value' => 'cognomenome@gmail.com',
+                            ],
+                        ],
+                    ],
                 ],
                 'description' => 'description',
                 'id' => null,
-                'name' => 'segment'
-            ]
+                'name' => 'segment',
+            ],
         ]);
 
         //dd($response);
@@ -124,15 +124,15 @@ class SegmentsTest extends TestCase
                                     'comparator_id' => '1',
                                     'field_id' => '-1',
                                     'name' => 'email',
-                                    'value' => 'cognomenome@gmail.com'
-                                ]
-                            ]
-                        ]
+                                    'value' => 'cognomenome@gmail.com',
+                                ],
+                            ],
+                        ],
                     ],
                     'description' => 'updated description',
                     'id' => null,
-                    'name' => 'updated name'
-                ]
+                    'name' => 'updated name',
+                ],
             ]
         );
 

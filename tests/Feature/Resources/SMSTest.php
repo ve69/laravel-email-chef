@@ -3,10 +3,10 @@
 namespace OfflineAgency\LaravelEmailChef\Tests\Feature\Resources;
 
 use OfflineAgency\LaravelEmailChef\Api\Resources\SMSApi;
-use OfflineAgency\LaravelEmailChef\Entities\SMS\Send;
 use OfflineAgency\LaravelEmailChef\Entities\SMS\Balance;
-use OfflineAgency\LaravelEmailChef\Entities\SMS\StatusMessage;
 use OfflineAgency\LaravelEmailChef\Entities\SMS\BulkMessageStatus;
+use OfflineAgency\LaravelEmailChef\Entities\SMS\Send;
+use OfflineAgency\LaravelEmailChef\Entities\SMS\StatusMessage;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class SMSTest extends TestCase
@@ -63,10 +63,9 @@ class SMSTest extends TestCase
         $SMS = new SMSApi();
 
         $response = $SMS->getBulkMessageStatus(
-                'bulk id provided'
+            'bulk id provided'
         );
 
         $this->assertInstanceOf(BulkMessageStatus::class, $response);
     }
-
 }

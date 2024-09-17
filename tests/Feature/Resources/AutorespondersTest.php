@@ -9,15 +9,14 @@ use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderCollecti
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderCount;
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderDeletion;
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\AutoresponderLinks;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\CreateAutoresponder;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\UpdateAutoresponder;
-use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\SendTestEmail;
 use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\Cloning;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\CreateAutoresponder;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\SendTestEmail;
+use OfflineAgency\LaravelEmailChef\Entities\Autoresponders\UpdateAutoresponder;
 use OfflineAgency\LaravelEmailChef\Tests\TestCase;
 
 class AutorespondersTest extends TestCase
 {
-
     //TODO check
     public function test_get_count()
     {
@@ -95,7 +94,7 @@ class AutorespondersTest extends TestCase
                     'link_id' => null,
                 ],
                 'default_order_segments' => 'ANY',
-            ]
+            ],
         ]);
 
         $this->assertInstanceOf(CreateAutoresponder::class, $response);
@@ -109,40 +108,40 @@ class AutorespondersTest extends TestCase
             '403132',
             [
                 'instance_in' => [
-                'id' => null,
-                'name' => 'updated test',
-                'type' => 'AUTORESPONDER',
-                'subject' => '[[email]]',
-                'new_dd' => '1',
-                'html_body' => 'html',
-                'sender_id' => '40086',
-                'template_id' => null,
-                'sent_count_cache' => '0',
-                'open_count_cache' => '0',
-                'click_count_cache' => '0',
-                'cache_update_time' => null,
-                'ga_enabled' => false,
-                'ga_campaign_title' => '',
-                'lists' => [
-                    [
-                        'list_id' => '108094',
-                        'segment_id' => '74016',
-                        'list_name' => 'Test nsc',
-                        'segment_name' => 'final',
-                    ],
-                ],
-                'creativity_type' => 'ready_made',
-                'template_source' => '1365',
-                'template_editor_id' => '505106',
-                'autoresponder' => [
                     'id' => null,
-                    'trigger_id' => '1',
-                    'active' => 'INACTIVE',
-                    'hours_delay' => 0,
-                    'campaign_id' => null,
-                    'link_id' => null,
-                ],
-                'default_order_segments' => 'ANY',
+                    'name' => 'updated test',
+                    'type' => 'AUTORESPONDER',
+                    'subject' => '[[email]]',
+                    'new_dd' => '1',
+                    'html_body' => 'html',
+                    'sender_id' => '40086',
+                    'template_id' => null,
+                    'sent_count_cache' => '0',
+                    'open_count_cache' => '0',
+                    'click_count_cache' => '0',
+                    'cache_update_time' => null,
+                    'ga_enabled' => false,
+                    'ga_campaign_title' => '',
+                    'lists' => [
+                        [
+                            'list_id' => '108094',
+                            'segment_id' => '74016',
+                            'list_name' => 'Test nsc',
+                            'segment_name' => 'final',
+                        ],
+                    ],
+                    'creativity_type' => 'ready_made',
+                    'template_source' => '1365',
+                    'template_editor_id' => '505106',
+                    'autoresponder' => [
+                        'id' => null,
+                        'trigger_id' => '1',
+                        'active' => 'INACTIVE',
+                        'hours_delay' => 0,
+                        'campaign_id' => null,
+                        'link_id' => null,
+                    ],
+                    'default_order_segments' => 'ANY',
                 ]
             ]
         );
@@ -173,7 +172,7 @@ class AutorespondersTest extends TestCase
                 'instance_in' => [
                     'id' => '403128',
                     'command' => 'send_test',
-                    'email' => 'email'
+                    'email' => 'email',
                 ]
             ]
         );
@@ -190,9 +189,9 @@ class AutorespondersTest extends TestCase
             [
                 'instance_in' => [
                     'autoresponder' => [
-                        'active' => 'ACTIVE'
-                    ]
-                ]
+                        'active' => 'ACTIVE',
+                    ],
+                ],
             ]
         );
 
@@ -208,9 +207,9 @@ class AutorespondersTest extends TestCase
             [
                 'instance_in' => [
                     'autoresponder' => [
-                        'active' => 'INACTIVE'
-                    ]
-                ]
+                        'active' => 'INACTIVE',
+                    ],
+                ],
             ]
         );
 
@@ -225,8 +224,8 @@ class AutorespondersTest extends TestCase
         $response = $autoresponder->cloning(
             [
                 'instance_in' => [
-                    'id' => '404282'
-                ]
+                    'id' => '404282',
+                ],
             ]
         );
 
