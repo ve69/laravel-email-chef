@@ -115,7 +115,7 @@ class ContactsApi extends Api
         array $instance_in = [],
         string $mode = 'ADMIN'
     ) {
-        $response = $this->put('contact/'.$contact_id, [
+        $response = $this->put('contacts/'.$contact_id, [
             'instance_in' => array_merge($instance_in, [
                 'mode' => $mode,
             ]),
