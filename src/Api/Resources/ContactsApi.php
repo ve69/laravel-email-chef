@@ -4,6 +4,7 @@ namespace OfflineAgency\LaravelEmailChef\Api\Resources;
 
 use Illuminate\Support\Facades\Validator;
 use OfflineAgency\LaravelEmailChef\Api\Api;
+use Illuminate\Support\Collection;
 use OfflineAgency\LaravelEmailChef\Entities\Contacts\CountContactEntity;
 use OfflineAgency\LaravelEmailChef\Entities\Contacts\CreatedContactEntity;
 use OfflineAgency\LaravelEmailChef\Entities\Contacts\GetCollection;
