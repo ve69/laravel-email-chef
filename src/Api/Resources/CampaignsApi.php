@@ -198,6 +198,7 @@ class CampaignsApi extends Api
         return $response->data;
     }
 
+
     public function cloneCampaign(int $id)
     {
         $response = $this->post('newsletters?clone=1', [
@@ -212,6 +213,7 @@ class CampaignsApi extends Api
 
         return $response->data;
     }
+
 
     public function getLinksCollection(int $campaign_id)
     {

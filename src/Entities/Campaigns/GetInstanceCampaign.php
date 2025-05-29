@@ -21,17 +21,4 @@ class GetInstanceCampaign extends AbstractEntity
     public string $click_count_cache;
     public ?string $ga_enabled;
     public ?string $ga_campaign_title;
-
-   /*
-    public ?CampaignEntity $campaign = null;
-
-    public function __construct(array $data = [])
-    {
-        parent::__construct($data);
-
-        if (isset($data['campaign'])) {
-            $this->campaign = new CampaignEntity($data['campaign']);
-        }
-    }
-   */
 }

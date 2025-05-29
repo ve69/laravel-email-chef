@@ -99,7 +99,7 @@ class CampaignsTest extends TestCase
             'https://app.emailchef.com/apps/api/v1/campaigns/104633' => Http::response($mockResponse, 200),
         ]);
 
-        //TODO: handle error
+
 
         $api = new CampaignsApi();
         $response = $api->getInstance(104633);
@@ -110,7 +110,7 @@ class CampaignsTest extends TestCase
     }
     public function test_create_instance()
     {
-        // Simula una risposta API finta
+
         Http::fake([
             'https://app.emailchef.com/apps/api/v1/campaigns' => Http::response([
                 'status' => 'OK',
@@ -118,10 +118,9 @@ class CampaignsTest extends TestCase
             ], 200)
         ]);
 
-        // Istanzia la classe CampaignsApi
+
         $campaignApi = new CampaignsApi();
 
-        // Dati della campagna da creare
         $campaignData = [
             'name' => 'My Campaign',
             'type' => 'CAMPAIGN',
@@ -136,10 +135,9 @@ class CampaignsTest extends TestCase
             ]
         ];
 
-        // Esegui il metodo
+
         $response = $campaignApi->createInstance($campaignData);
 
-        // Verifica che la risposta sia della classe attesa
         $this->assertInstanceOf(CreatedCampaignEntity::class, $response);
         $this->assertEquals('OK', $response->status);
         $this->assertEquals('104636', $response->id);
@@ -149,7 +147,7 @@ class CampaignsTest extends TestCase
         Http::fake([
             'https://app.emailchef.com/apps/api/v1/campaigns/104636' => Http::response([
                 'status' => 'OK',
-                'id' => '104636',
+                'id' => '104636'
             ], 200)
         ]);
 
@@ -245,13 +243,12 @@ class CampaignsTest extends TestCase
         Http::fake([
             "https://app.emailchef.com/apps/api/v1/campaigns/{$campaign_id}/unschedule" => Http::response([
                 'status' => 'OK',
+                'id'=>104636
             ], 200),
         ]);
 
         $api = new CampaignsApi();
         $response = $api->deleteScheduling($campaign_id);
-
-        //TODO: handle campaign id error
 
         $this->assertIsObject($response);
         $this->assertEquals('OK', $response->status);
@@ -264,78 +261,86 @@ class CampaignsTest extends TestCase
         Http::fake([
             "https://app.emailchef.com/apps/api/v1/campaigns/{$campaign_id}/archive" => Http::response([
                 'status' => 'OK',
+                'id'=>104636
             ], 200),
         ]);
 
         $api = new CampaignsApi();
         $response = $api->archiveCampaign($campaign_id);
 
-        //TODO: handle campaign id error
-
         $this->assertEquals('OK', $response->status);
-        $this->assertEquals((string) $campaign_id, $response->campaign_id);
+        $this->assertEquals((string) $campaign_id, $response->id);
     }
 
-    public function test_unarchive_campaign(){
+    public function test_unarchive_campaign()
+    {
         $campaign_id = 104636;
 
         Http::fake([
-            "https://app.emailchef.com  /apps/api/v1/campaigns/{$campaign_id}/archive" => Http::response([
+            "https://app.emailchef.com/apps/api/v1/campaigns/{$campaign_id}/archivecampaign" => Http::response([
                 'status' => 'OK',
+                'campaign_id' => (string)$campaign_id
             ], 200),
         ]);
 
         $api = new CampaignsApi();
         $response = $api->unarchiveCampaign($campaign_id);
 
-        //TODO: handle error
-
         $this->assertEquals('OK', $response->status);
         $this->assertEquals((string) $campaign_id, $response->campaign_id);
     }
 
-    public function test_clone_campaign(){
-         $campaign_id = 104636;
+    public function test_clone_campaign()
+    {
+        $campaign_id = 104636;
 
         Http::fake([
-            "https://app.emailchef.com/apps/api/v1/campaigns/{$campaign_id}/archive" => Http::response([
+            "https://app.emailchef.com/apps/api/v1/newsletters?clone=1" => Http::response([
                 'status' => 'OK',
+                'id' => $campaign_id,
             ], 200),
         ]);
 
         $api = new CampaignsApi();
         $response = $api->cloneCampaign($campaign_id);
 
-        //TODO: handle error
-
         $this->assertEquals('OK', $response->status);
-        $this->assertEquals((string) $campaign_id, $response->campaign_id);
+        $this->assertEquals($campaign_id, $response->id);
+    }
 
-   }
-   public function testGetLinksCollection()
+    public function testGetLinksCollection()
     {
         $campaign_id = 104636;
 
-        $campaigns = new CampaignsApi();
-
-        //TODO: add http fake
         Http::fake([
-            "https://app.emailchef.com/apps/api/v1/campaigns/{$campaign_id}/archive" => Http::response([
-                'status' => 'OK',
+            "https://app.emailchef.com/apps/api/v1/campaigns/{$campaign_id}/links" => Http::response([
+                [
+                    'url' => 'http://www.omicronmedia.com',
+                    'name' => 'untitled_link_1',
+                    'id' => '9620'
+                ],
+                [
+                    'url' => 'https://twitter.com/SendBlaster',
+                    'name' => 'untitled_link_12',
+                    'id' => '9631'
+                ],
             ], 200),
         ]);
 
-        $response = $campaigns->getLinksCollection($campaign_id);
+        $api = new CampaignsApi();
+        $response = $api->getLinksCollection($campaign_id);
 
-        $this->assertInstanceOf(Error::class, $response);
 
-        $this->assertNotInstanceOf(\Illuminate\Support\Collection::class, $response);
+        $this->assertInstanceOf(\Illuminate\Support\Collection::class, $response);
+        $this->assertCount(2, $response);
 
-        if ($response->isNotEmpty()) {
-            $this->assertInstanceOf(LinkEntity::class, $response->first());
-            $this->assertObjectHasAttribute('url', $response->first());
-            $this->assertObjectHasAttribute('name', $response->first());
-            $this->assertObjectHasAttribute('id', $response->first());
+
+        foreach ($response as $link) {
+            $this->assertInstanceOf(LinkEntity::class, $link);
+            $this->assertObjectHasProperty('url', $link);
+            $this->assertObjectHasProperty('name', $link);
+            $this->assertObjectHasProperty('id', $link);
         }
     }
+
 }
